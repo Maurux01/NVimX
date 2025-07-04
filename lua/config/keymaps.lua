@@ -4,3 +4,6 @@
 
 -- Load theme keymaps
 require("config.theme-keymaps")
+
+-- Load AI keymaps
+require("config.ai-keymaps")
