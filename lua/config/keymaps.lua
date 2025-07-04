@@ -7,3 +7,12 @@ require("config.theme-keymaps")
 
 -- Load AI keymaps
 require("config.ai-keymaps")
+
+-- Load buffer navigation keymaps
+require("config.buffer-keymaps")
+
+-- Load test keymaps (temporary)
+require("config.test-themes")
+
+-- Load theme debug (temporary)
+require("config.theme-debug")

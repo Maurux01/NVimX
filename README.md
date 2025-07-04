@@ -127,6 +127,18 @@ choco install ollama
 | `gc` | Toggle line comment |
 | `gcc` | Toggle current line comment |
 
+### Buffer Navigation
+| Keymap | Action |
+|--------|--------|
+| `<Tab>` | Next buffer |
+| `<S-Tab>` | Previous buffer |
+| `<leader>bb` | Switch to other buffer |
+| `<leader>bf` | Find buffer with Telescope |
+| `<leader>1-9` | Go to buffer 1-9 |
+| `<leader>0` | Go to buffer 10 |
+| `<leader>bd` | Close buffer |
+| `<leader>bh` | Show buffer navigation help |
+
 ### LazyVim Defaults
 All standard LazyVim keymaps are preserved. Press `<leader>` to see available commands.
 

@@ -1,8 +1,6 @@
 -- Theme switching keymaps with persistence
 -- These keymaps allow you to quickly switch between dark themes and save your choice
 
-local theme_persistence = require("config.theme-persistence")
-
 local themes = {
   "tokyonight",
   "catppuccin", 
@@ -22,6 +20,32 @@ local themes = {
 
 local current_theme_index = 1
 
+-- Simple theme persistence
+local theme_file = vim.fn.stdpath("data") .. "/current_theme.txt"
+
+local function save_theme(theme_name)
+  if vim.tbl_contains(themes, theme_name) then
+    local file = io.open(theme_file, "w")
+    if file then
+      file:write(theme_name)
+      file:close()
+      vim.notify("Theme saved: " .. theme_name, vim.log.levels.INFO)
+    end
+  end
+end
+
+local function get_current_theme()
+  local file = io.open(theme_file, "r")
+  if file then
+    local saved_theme = file:read("*line")
+    file:close()
+    if saved_theme and vim.tbl_contains(themes, saved_theme) then
+      return saved_theme
+    end
+  end
+  return "tokyonight"
+end
+
 -- Function to cycle through themes
 local function cycle_theme()
   current_theme_index = current_theme_index + 1
@@ -31,7 +55,7 @@ local function cycle_theme()
   
   local theme_name = themes[current_theme_index]
   vim.cmd.colorscheme(theme_name)
-  theme_persistence.save_theme(theme_name) -- Save the theme
+  save_theme(theme_name)
   vim.notify("Switched to theme: " .. theme_name .. " (saved)", vim.log.levels.INFO)
 end
 
@@ -39,15 +63,51 @@ end
 local function set_theme(theme_name)
   if vim.tbl_contains(themes, theme_name) then
     vim.cmd.colorscheme(theme_name)
-    current_theme_index = vim.tbl_index(themes, theme_name)
-    theme_persistence.save_theme(theme_name) -- Save the theme
+    current_theme_index = vim.tbl_index(themes, theme_name) or 1
+    save_theme(theme_name)
     vim.notify("Switched to theme: " .. theme_name .. " (saved)", vim.log.levels.INFO)
   else
     vim.notify("Theme not found: " .. theme_name, vim.log.levels.ERROR)
   end
 end
 
--- Set up keymaps (organized to avoid conflicts)
+-- Function to show theme status
+local function show_theme_status()
+  local current = get_current_theme()
+  local status_text = "Current theme: " .. current
+  
+  local file = io.open(theme_file, "r")
+  if file then
+    file:close()
+    status_text = status_text .. " (saved)"
+  else
+    status_text = status_text .. " (not saved)"
+  end
+  
+  vim.notify(status_text, vim.log.levels.INFO, {
+    title = "Theme Status",
+    timeout = 3000,
+  })
+end
+
+-- Function to list themes
+local function list_themes()
+  local current = get_current_theme()
+  local theme_list = {}
+  
+  for _, theme in ipairs(themes) do
+    local indicator = (theme == current) and " ✓" or ""
+    table.insert(theme_list, theme .. indicator)
+  end
+  
+  local message = "Available themes:\n" .. table.concat(theme_list, "\n")
+  vim.notify(message, vim.log.levels.INFO, {
+    title = "Theme List",
+    timeout = 5000,
+  })
+end
+
+-- Set up keymaps
 vim.keymap.set("n", "<leader>tn", cycle_theme, { desc = "Next Theme (saved)" })
 
 -- Original themes
@@ -69,21 +129,23 @@ vim.keymap.set("n", "<leader>t.", function() set_theme("oceanicnext") end, { des
 vim.keymap.set("n", "<leader>ta", function() set_theme("palenight") end, { desc = "Palenight (saved)" })
 
 -- Additional theme management keymaps
-vim.keymap.set("n", "<leader>t?", theme_persistence.show_theme_status, { desc = "Show Theme Status" })
-vim.keymap.set("n", "<leader>tl", function() 
-  local themes_list = theme_persistence.list_themes()
-  local message = "Available themes:\n" .. table.concat(themes_list, "\n")
-  vim.notify(message, vim.log.levels.INFO, {
-    title = "Theme List",
-    timeout = 5000,
-  })
-end, { desc = "List Themes" })
+vim.keymap.set("n", "<leader>t?", show_theme_status, { desc = "Show Theme Status" })
+vim.keymap.set("n", "<leader>tl", list_themes, { desc = "List Themes" })
 
 -- Initialize current theme index based on saved theme
 local function init_theme_index()
-  local saved_theme = theme_persistence.get_current_theme()
+  local saved_theme = get_current_theme()
   current_theme_index = vim.tbl_index(themes, saved_theme) or 1
 end
 
 -- Initialize on startup
-init_theme_index() 
+init_theme_index()
+
+-- Load theme on startup
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    local saved_theme = get_current_theme()
+    vim.cmd.colorscheme(saved_theme)
+  end,
+  priority = 1000,
+}) 
