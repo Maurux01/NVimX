@@ -50,4 +50,13 @@ Codeium:
     title = "AI Keymaps",
     timeout = 10000,
   })
-end, { desc = "Show AI Keymaps Help" }) 
+end, { desc = "Show AI Keymaps Help" })
+
+local function tbl_index(tbl, value)
+  for i, v in ipairs(tbl) do
+    if v == value then
+      return i
+    end
+  end
+  return nil
+end 
