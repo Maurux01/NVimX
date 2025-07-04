@@ -24,6 +24,16 @@ A powerful Neovim configuration built on top of [LazyVim](https://github.com/Laz
 - **Gruvbox** - Classic high-contrast theme
 - **Dracula** - Vibrant and eye-catching theme
 - **One Dark** - Atom-inspired dark theme
+- **Material** - Google Material Design inspired theme
+- **Nightfox** - Soft, warm dark theme
+- **Kanagawa** - Traditional Japanese-inspired theme
+- **Rose Pine** - All natural pine, soot, and lilac theme
+- **Monokai Pro** - Professional dark theme with vibrant colors
+- **Sonokai** - High contrast and Vivid color theme
+- **Edge** - Clean, elegant and colorful theme
+- **Oceanic Next** - Dark theme based on Oceanic Next
+- **Palenight** - Soothing dark theme for the evening
+- **🔄 Persistent** - Your theme choice is automatically saved and restored between sessions
 
 ### 🛠️ Developer Tools
 - **Smart Comments** - Intelligent commenting system
@@ -73,15 +83,26 @@ choco install ollama
 
 ## ⌨️ Keymaps
 
-### Theme Switching
+### Theme Switching (Persistent)
 | Keymap | Action |
 |--------|--------|
-| `<leader>tn` | Cycle to next theme |
-| `<leader>tt` | Tokyo Night theme |
-| `<leader>tc` | Catppuccin theme |
-| `<leader>tg` | Gruvbox theme |
-| `<leader>td` | Dracula theme |
-| `<leader>to` | One Dark theme |
+| `<leader>tn` | Cycle to next theme (saved) |
+| `<leader>tt` | Tokyo Night theme (saved) |
+| `<leader>tc` | Catppuccin theme (saved) |
+| `<leader>tg` | Gruvbox theme (saved) |
+| `<leader>td` | Dracula theme (saved) |
+| `<leader>to` | One Dark theme (saved) |
+| `<leader>tm` | Material theme (saved) |
+| `<leader>tf` | Nightfox theme (saved) |
+| `<leader>tk` | Kanagawa theme (saved) |
+| `<leader>tr` | Rose Pine theme (saved) |
+| `<leader>tp` | Monokai Pro theme (saved) |
+| `<leader>ts` | Sonokai theme (saved) |
+| `<leader>te` | Edge theme (saved) |
+| `<leader>t.` | Oceanic Next theme (saved) |
+| `<leader>ta` | Palenight theme (saved) |
+| `<leader>t?` | Show current theme status |
+| `<leader>tl` | List all available themes |
 
 ### AI Assistants
 | Keymap | Action |

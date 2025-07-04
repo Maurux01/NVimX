@@ -317,6 +317,356 @@ return {
     },
   },
 
+  -- Material Theme (Dark)
+  {
+    "marko-cerovac/material.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      contrast = {
+        sidebars = true,
+        floating_windows = true,
+        line_numbers = false,
+        sign_column = false,
+        fold_column = false,
+        cursor_line = false,
+      },
+      styles = {
+        comments = { italic = true },
+        strings = { bold = true },
+        keywords = { bold = true },
+        functions = { bold = true },
+        variables = {},
+        operators = {},
+        types = {},
+      },
+      plugins = {
+        indent_blankline = {
+          enabled = true,
+          colored_indent_levels = false,
+        },
+        lualine = {
+          enabled = true,
+        },
+        gitsigns = {
+          enabled = true,
+        },
+        nvim_tree = {
+          enabled = true,
+        },
+        which_key = {
+          enabled = true,
+        },
+        indent_blankline = {
+          enabled = true,
+        },
+        vim_illuminate = {
+          enabled = true,
+        },
+      },
+      lualine_style = "stealth",
+      async_loading = true,
+      custom_colors = nil,
+      custom_highlights = {},
+      disable = {
+        colored_cursor_line = false,
+        borders = false,
+        background = false,
+        term_colors = false,
+        eob_lines = false,
+      },
+      high_visibility = {
+        lighter = false,
+        darker = false,
+      },
+    },
+  },
+
+  -- Nightfox (Dark)
+  {
+    "EdenEast/nightfox.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      options = {
+        transparent = false,
+        terminal_colors = true,
+        dim_inactive = false,
+        module_default = true,
+        styles = {
+          comments = "italic",
+          keywords = "bold",
+          types = "italic,bold",
+          conditionals = "bold",
+          constants = "bold",
+          functions = "bold",
+          numbers = "bold",
+          operators = "bold",
+          strings = "italic",
+          variables = "bold",
+        },
+        inverse = {
+          match_paren = false,
+          visual = false,
+          search = false,
+        },
+        modules = {
+          aerial = true,
+          barbar = true,
+          beacon = false,
+          cmp = true,
+          coc = {
+            enabled = true,
+            background = true,
+          },
+          dap_ui = true,
+          dashboard = true,
+          diagnostic = {
+            enabled = true,
+            background = true,
+          },
+          fern = false,
+          fidget = true,
+          gitgutter = false,
+          gitsigns = true,
+          hop = false,
+          illuminate = true,
+          indent_blankline = {
+            enabled = true,
+            colored_indent_levels = false,
+          },
+          lightspeed = false,
+          lsp_saga = false,
+          lsp_trouble = true,
+          mason = true,
+          native_lsp = {
+            enabled = true,
+            virtual_text = {
+              errors = "italic",
+              hints = "italic",
+              warnings = "italic",
+              information = "italic",
+            },
+            underlines = {
+              errors = "underline",
+              hints = "underline",
+              warnings = "underline",
+              information = "underline",
+            },
+          },
+          navic = {
+            enabled = false,
+            custom_bg = false,
+          },
+          neogit = true,
+          neotree = true,
+          notify = true,
+          nvimtree = true,
+          packer = false,
+          palette = true,
+          parinfer = false,
+          pounce = false,
+          sneak = false,
+          symbols_outline = true,
+          telescope = true,
+          treesitter = true,
+          ts_rainbow = true,
+          which_key = true,
+        },
+      },
+      palettes = {},
+      specs = {},
+      groups = {},
+    },
+  },
+
+  -- Kanagawa (Dark)
+  {
+    "rebelot/kanagawa.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      compile = false,
+      undercurl = true,
+      commentStyle = { italic = true },
+      functionStyle = {},
+      keywordStyle = { italic = true },
+      statementStyle = { bold = true },
+      typeStyle = {},
+      transparent = false,
+      dimInactive = false,
+      terminalColors = true,
+      theme = "dragon",
+      background = {
+        dark = "dragon",
+        light = "lotus",
+      },
+      colors = {
+        theme = {
+          all = {
+            ui = {
+              bg_gutter = "none",
+            },
+          },
+        },
+      },
+      overrides = function(colors)
+        local theme = colors.theme
+        return {
+          Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 },
+          PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
+          PmenuSbar = { bg = theme.ui.bg_m1 },
+          PmenuThumb = { bg = theme.ui.bg_p2 },
+        }
+      end,
+    },
+  },
+
+  -- Rose Pine (Dark)
+  {
+    "rose-pine/neovim",
+    name = "rose-pine",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      variant = "moon",
+      dark_variant = "moon",
+      dim_inactive_windows = false,
+      extend_background_behind_borders = true,
+      enable = {
+        terminal = true,
+        legacy_highlights = true,
+        migrations = true,
+      },
+      styles = {
+        bold = true,
+        italic = true,
+        transparency = false,
+      },
+      groups = {
+        border = "muted",
+        link = "iris",
+        panel = "surface",
+        error = "love",
+        hint = "iris",
+        info = "foam",
+        note = "pine",
+        todo = "rose",
+        warn = "gold",
+        git_add = "foam",
+        git_change = "rose",
+        git_delete = "love",
+        git_dirty = "rose",
+        git_ignore = "muted",
+        git_merge = "iris",
+        git_rename = "pine",
+        git_stage = "iris",
+        git_text = "rose",
+        git_untracked = "subtle",
+        h1 = "iris",
+        h2 = "foam",
+        h3 = "rose",
+        h4 = "gold",
+        h5 = "pine",
+        h6 = "foam",
+      },
+    },
+  },
+
+  -- Monokai Pro
+  {
+    "loctvl842/monokai-pro.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      transparent_background = false,
+      terminal_colors = true,
+      devicons = true,
+      styles = {
+        comment = { italic = true },
+        keyword = { italic = true },
+        type = { italic = true },
+        storageclass = { italic = true },
+        structure = { italic = true },
+        parameter = { italic = true },
+        annotation = { italic = true },
+        tag_attribute = { italic = true },
+      },
+      filter = "pro",
+      day_night = {
+        enable = false,
+        day_filter = "pro",
+        night_filter = "octagon",
+      },
+      inc_search = "background",
+      background_clear = {
+        "float_win",
+        "toggleterm",
+        "telescope",
+        "which-key",
+        "renamer",
+        "notify",
+        "nvim-tree",
+        "neo-tree",
+        "bufferline",
+      },
+      plugins = {
+        bufferline = {
+          underline_selected = false,
+          underline_visible = false,
+          underline_fill = false,
+          bold = true,
+        },
+        indent_blankline = {
+          context_highlight = "default",
+          context_start_underline = false,
+        },
+      },
+    },
+  },
+
+  -- Sonokai
+  {
+    "sainnhe/sonokai",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.g.sonokai_style = "andromeda"
+      vim.g.sonokai_enable_italic = 1
+      vim.g.sonokai_disable_italic_comment = 0
+      vim.g.sonokai_diagnostic_line_highlight = 1
+      vim.g.sonokai_better_performance = 1
+    end,
+  },
+
+  -- Edge
+  {
+    "sainnhe/edge",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.g.edge_style = "aura"
+      vim.g.edge_enable_italic = 1
+      vim.g.edge_disable_italic_comment = 0
+      vim.g.edge_diagnostic_line_highlight = 1
+      vim.g.edge_better_performance = 1
+    end,
+  },
+
+  -- Oceanic Next
+  {
+    "mhartington/oceanic-next",
+    lazy = false,
+    priority = 1000,
+  },
+
+  -- Palenight
+  {
+    "drewtempelmeyer/palenight.vim",
+    lazy = false,
+    priority = 1000,
+  },
+
   -- ============================================================================
   -- THEME SWITCHER
   -- ============================================================================

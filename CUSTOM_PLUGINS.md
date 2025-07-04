@@ -72,13 +72,30 @@ Esta configuración extiende LazyVim con plugins adicionales para IA, resaltado 
 
 ### 🎨 Theme Keymaps
 
-### Cambio de Temas
-- `<leader>tn` - Siguiente tema (cicla entre todos)
-- `<leader>tt` - Tokyo Night
-- `<leader>tc` - Catppuccin
-- `<leader>tg` - Gruvbox
-- `<leader>td` - Dracula
-- `<leader>to` - One Dark
+### Cambio de Temas (Persistentes)
+
+#### Temas Originales
+- `<leader>tn` - Siguiente tema (cicla entre todos) - **Se guarda automáticamente**
+- `<leader>tt` - Tokyo Night - **Se guarda automáticamente**
+- `<leader>tc` - Catppuccin - **Se guarda automáticamente**
+- `<leader>tg` - Gruvbox - **Se guarda automáticamente**
+- `<leader>td` - Dracula - **Se guarda automáticamente**
+- `<leader>to` - One Dark - **Se guarda automáticamente**
+
+#### Nuevos Temas
+- `<leader>tm` - Material - **Se guarda automáticamente**
+- `<leader>tf` - Nightfox - **Se guarda automáticamente**
+- `<leader>tk` - Kanagawa - **Se guarda automáticamente**
+- `<leader>tr` - Rose Pine - **Se guarda automáticamente**
+- `<leader>tp` - Monokai Pro - **Se guarda automáticamente**
+- `<leader>ts` - Sonokai - **Se guarda automáticamente**
+- `<leader>te` - Edge - **Se guarda automáticamente**
+- `<leader>t.` - Oceanic Next - **Se guarda automáticamente**
+- `<leader>ta` - Palenight - **Se guarda automáticamente**
+
+### Gestión de Temas
+- `<leader>t?` - Mostrar estado del tema actual
+- `<leader>tl` - Listar todos los temas disponibles
 
 ## 🛠️ Additional Enhancements
 

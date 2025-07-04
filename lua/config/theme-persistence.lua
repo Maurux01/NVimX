@@ -13,6 +13,15 @@ local themes = {
   "gruvbox",
   "dracula",
   "onedark",
+  "material",
+  "nightfox",
+  "kanagawa",
+  "rose-pine",
+  "monokai-pro",
+  "sonokai",
+  "edge",
+  "oceanicnext",
+  "palenight",
 }
 
 -- Function to save current theme to file
