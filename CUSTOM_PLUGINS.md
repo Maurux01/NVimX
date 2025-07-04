@@ -17,9 +17,10 @@ Esta configuración extiende LazyVim con plugins adicionales para IA, resaltado 
   - `<leader>ct` - Toggle Copilot Chat
 - **Requisito**: Instalar `ollama` para usar CopilotChat
 
-### Cursor AI (Alternativa)
-- **Plugin**: `cursor-ai/cursor.nvim`
-- **Descripción**: Asistente de IA alternativo
+### Codeium (Alternativa)
+- **Plugin**: `Exafunction/codeium.nvim`
+- **Descripción**: Asistente de IA gratuito sin autenticación requerida
+- **Ventajas**: No requiere cuenta de GitHub, funciona offline
 
 ## 🎨 Syntax Highlighting & Brackets
 

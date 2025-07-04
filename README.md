@@ -11,7 +11,7 @@ A powerful Neovim configuration built on top of [LazyVim](https://github.com/Laz
 ### 🤖 AI-Powered Development
 - **GitHub Copilot** - Intelligent code completion
 - **Copilot Chat** - Integrated AI chat assistant
-- **Cursor AI** - Alternative AI assistant
+- **Codeium** - Free AI assistant (no authentication required)
 
 ### 🎨 Enhanced Visual Experience
 - **Rainbow Delimiters** - Colorful brackets and parentheses

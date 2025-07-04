@@ -36,13 +36,27 @@ return {
   },
 
   -- Alternative: Cursor AI (if you prefer)
+  -- Disabled due to GitHub authentication issues
+  -- {
+  --   "cursor-ai/cursor.nvim",
+  --   event = "VeryLazy",
+  --   config = function()
+  --     require("cursor").setup({
+  --       -- Configuration options
+  --     })
+  --   end,
+  -- },
+
+  -- Alternative AI: Codeium (free, no auth required)
   {
-    "cursor-ai/cursor.nvim",
-    event = "VeryLazy",
+    "Exafunction/codeium.nvim",
+    event = "InsertEnter",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "hrsh7th/nvim-cmp",
+    },
     config = function()
-      require("cursor").setup({
-        -- Configuration options
-      })
+      require("codeium").setup({})
     end,
   },
 
@@ -301,15 +315,8 @@ return {
   {
     "folke/which-key.nvim",
     opts = function(_, opts)
-      opts.plugins.presets = {
-        operators = false,
-        motions = false,
-        text_objects = false,
-        windows = false,
-        nav = false,
-        z = false,
-        g = false,
-      }
+      -- Ensure defaults table exists
+      opts.defaults = opts.defaults or {}
       
       -- Add theme switching to which-key
       opts.defaults["<leader>t"] = { name = "Themes" }
