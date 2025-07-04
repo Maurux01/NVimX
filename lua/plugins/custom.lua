@@ -668,6 +668,183 @@ return {
   },
 
   -- ============================================================================
+  -- ADDITIONAL DARK THEMES WITH EXCELLENT SYNTAX HIGHLIGHTING
+  -- ============================================================================
+
+  -- Nord Theme (Excellent syntax highlighting)
+  {
+    "shaunsingh/nord.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.g.nord_contrast = true
+      vim.g.nord_borders = false
+      vim.g.nord_disable_background = false
+      vim.g.nord_italic = true
+      vim.g.nord_uniform_diff_background = true
+      vim.g.nord_bold = false
+    end,
+  },
+
+  -- Everforest (Nature-inspired with great syntax)
+  {
+    "sainnhe/everforest",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.g.everforest_background = "hard"
+      vim.g.everforest_better_performance = 1
+      vim.g.everforest_enable_italic = 1
+      vim.g.everforest_disable_italic_comment = 0
+      vim.g.everforest_diagnostic_line_highlight = 1
+      vim.g.everforest_diagnostic_text_highlight = 1
+      vim.g.everforest_diagnostic_virtual_text = "colored"
+    end,
+  },
+
+  -- Doom One (Doom Emacs inspired)
+  {
+    "NTBBloodbath/doom-one.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("doom-one").setup({
+        cursor_coloring = false,
+        terminal_colors = true,
+        italic_comments = true,
+        enable_treesitter = true,
+        transparent_background = false,
+        pumblend = {
+          enable = false,
+          transparency_amount = 20,
+        },
+        plugins_integrations = {
+          neorg = true,
+          barbar = true,
+          bufferline = true,
+          gitgutter = true,
+          gitsigns = true,
+          telescope = true,
+          neogit = true,
+          nvim_tree = true,
+          which_key = true,
+          indent_blankline = true,
+          vim_illuminate = true,
+          lspsaga = true,
+        },
+      })
+    end,
+  },
+
+  -- Carbonfox (Part of Nightfox family)
+  {
+    "EdenEast/nightfox.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      options = {
+        transparent = false,
+        terminal_colors = true,
+        dim_inactive = false,
+        module_default = true,
+        styles = {
+          comments = "italic",
+          keywords = "bold",
+          types = "italic,bold",
+        },
+        inverse = {
+          match_paren = false,
+          visual = false,
+          search = false,
+        },
+        modules = {
+          carbonfox = {
+            transparent = false,
+          },
+        },
+      },
+    },
+  },
+
+  -- Oxocarbon (IBM Carbon inspired)
+  {
+    "nyoom-engineering/oxocarbon.nvim",
+    lazy = false,
+    priority = 1000,
+  },
+
+  -- Melange (Warm dark theme)
+  {
+    "savq/melange-nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      transparent_background = false,
+      dim_inactive_windows = false,
+      term_colors = true,
+      plugin_default = "auto",
+      plugins = {
+        indent_blankline = { enabled = true },
+        nvim_tree = { enabled = true },
+        neogit = { enabled = true },
+        gitsigns = { enabled = true },
+        telescope = { enabled = true },
+        which_key = { enabled = true },
+        lsp_saga = { enabled = true },
+        lightline = { enabled = true },
+        lualine = { enabled = true },
+        lspsaga = { enabled = true },
+        cmp = { enabled = true },
+        dap = { enabled = true },
+        dap_ui = { enabled = true },
+        neotree = { enabled = true },
+        nvim_bufferline = { enabled = true },
+        nvim_notify = { enabled = true },
+        nvim_ts_rainbow = { enabled = true },
+        ts_rainbow = { enabled = true },
+        vim_illuminate = { enabled = true },
+      },
+    },
+  },
+
+  -- Modus Vivendi (Accessible dark theme)
+  {
+    "ishan9299/modus-theme-vim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.g.modus_theme = "modus-vivendi"
+    end,
+  },
+
+  -- Vim One Dark (Enhanced One Dark)
+  {
+    "rakr/vim-one",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme("one")
+      vim.g.one_allow_italics = 1
+    end,
+  },
+
+  -- Papercolor Dark (Material Design inspired)
+  {
+    "NLKNguyen/papercolor-theme",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.g.PaperColor_Theme_Options = {
+        theme = {
+          default = {
+            transparent_background = 0,
+          },
+        },
+      }
+    end,
+  },
+
+  -- ============================================================================
   -- THEME SWITCHER
   -- ============================================================================
   

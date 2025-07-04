@@ -22,6 +22,15 @@ local themes = {
   "edge",
   "oceanicnext",
   "palenight",
+  "nord",
+  "everforest",
+  "doom-one",
+  "carbonfox",
+  "oxocarbon",
+  "melange",
+  "modus-vivendi",
+  "one",
+  "papercolor",
 }
 
 -- Function to save current theme to file

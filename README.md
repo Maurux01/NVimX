@@ -30,7 +30,7 @@ A powerful Neovim configuration built on top of [LazyVim](https://github.com/Laz
 - **Indent Guides** - Visual indentation indicators with context highlighting
 - **Enhanced Treesitter** - Superior syntax highlighting for 20+ languages
 
-### 🌙 Beautiful Dark Themes (14 Total)
+### 🌙 Beautiful Dark Themes (23 Total)
 - **Tokyo Night** - Elegant and modern dark theme
 - **Catppuccin** - Soothing mocha-flavored theme
 - **Gruvbox** - Classic high-contrast theme
@@ -45,6 +45,15 @@ A powerful Neovim configuration built on top of [LazyVim](https://github.com/Laz
 - **Edge** - Clean, elegant and colorful theme
 - **Oceanic Next** - Dark theme based on Oceanic Next
 - **Palenight** - Soothing dark theme for the evening
+- **Nord** - Clean and minimal Arctic-inspired theme
+- **Everforest** - Nature-inspired warm dark theme
+- **Doom One** - Doom Emacs inspired dark theme
+- **Carbonfox** - Carbon-inspired dark theme
+- **Oxocarbon** - IBM Carbon design system inspired
+- **Melange** - Warm and cozy dark theme
+- **Modus Vivendi** - Accessible high-contrast dark theme
+- **Vim One** - Enhanced One Dark theme
+- **Papercolor** - Material Design inspired dark theme
 
 **🔄 Persistent Theme System** - Your theme choice is automatically saved and restored between sessions
 
@@ -124,6 +133,15 @@ choco install ollama
 | `<leader>te` | Edge theme (saved) |
 | `<leader>t.` | Oceanic Next theme (saved) |
 | `<leader>ta` | Palenight theme (saved) |
+| `<leader>tn` | Nord theme (saved) |
+| `<leader>tv` | Everforest theme (saved) |
+| `<leader>td` | Doom One theme (saved) |
+| `<leader>tx` | Carbonfox theme (saved) |
+| `<leader>tx` | Oxocarbon theme (saved) |
+| `<leader>tl` | Melange theme (saved) |
+| `<leader>tm` | Modus Vivendi theme (saved) |
+| `<leader>to` | Vim One theme (saved) |
+| `<leader>tp` | Papercolor theme (saved) |
 | `<leader>t?` | Show current theme status |
 | `<leader>tl` | List all available themes |
 
@@ -207,12 +225,23 @@ All standard LazyVim keymaps are preserved. Press `<leader>` to see available co
 | **Edge** | `<leader>te` | Clean, elegant and colorful |
 | **Oceanic Next** | `<leader>t.` | Relaxing oceanic palette |
 | **Palenight** | `<leader>ta` | Soothing for evenings |
+| **Nord** | `<leader>tn` | Clean and minimal |
+| **Everforest** | `<leader>tv` | Nature-inspired warm |
+| **Doom One** | `<leader>td` | Doom Emacs inspired |
+| **Carbonfox** | `<leader>tx` | Carbon-inspired |
+| **Oxocarbon** | `<leader>tx` | IBM Carbon design |
+| **Melange** | `<leader>tl` | Warm and cozy |
+| **Modus Vivendi** | `<leader>tm` | Accessible high-contrast |
+| **Vim One** | `<leader>to` | Enhanced One Dark |
+| **Papercolor** | `<leader>tp` | Material Design inspired |
 
 ### Theme Usage Recommendations
-- **Daily Development**: Tokyo Night, Catppuccin, Material
-- **Night Sessions**: Nightfox, Palenight, Kanagawa
-- **Creative Design**: Rose Pine, Dracula, Monokai Pro
-- **Reading**: One Dark, Edge, Gruvbox
+- **Daily Development**: Tokyo Night, Catppuccin, Material, Nord
+- **Night Sessions**: Nightfox, Palenight, Kanagawa, Everforest
+- **Creative Design**: Rose Pine, Dracula, Monokai Pro, Doom One
+- **Reading**: One Dark, Edge, Gruvbox, Modus Vivendi
+- **Professional**: Carbonfox, Oxocarbon, Vim One
+- **Warm & Cozy**: Melange, Papercolor
 
 ---
 
@@ -387,3 +416,44 @@ Enhanced syntax highlighting for:
 ---
 
 💡 **Tip**: Press `<leader>bh` for buffer navigation help and `<leader>t?` to see current theme status.
+
+## 🤖 How to Use AI Features
+
+This configuration includes three powerful AI assistants:
+
+### 1. GitHub Copilot
+- **Autocompletion**: As you type, Copilot will suggest code completions.
+- **Keymaps**:
+  - `<C-j>`: Next suggestion (Insert mode)
+  - `<C-k>`: Previous suggestion (Insert mode)
+  - `<C-l>`: Accept suggestion (Insert mode)
+  - `<C-h>`: Dismiss suggestion (Insert mode)
+  - `<leader>cp`: Open Copilot panel (Normal mode)
+  - `<leader>cs`: Show Copilot status (Normal mode)
+- **Requirements**: You need a valid GitHub Copilot subscription and to be logged in with `:Copilot setup`.
+
+### 2. Copilot Chat
+- **Chat with AI**: Ask Copilot questions about your code, get explanations, or generate code snippets.
+- **Keymaps**:
+  - `<leader>cc`: Open Copilot Chat
+  - `<leader>ct`: Toggle Copilot Chat
+- **Requirements**: Requires [Ollama](https://ollama.ai/) running locally. Install and start with `ollama serve`.
+
+### 3. Codeium
+- **Free AI Autocompletion**: Works similar to Copilot but does not require authentication.
+- **Keymap**:
+  - `<C-;>`: Accept Codeium suggestion (Insert mode)
+- **Advantages**: No GitHub account required, works out of the box.
+
+### 📋 AI Keymaps Help
+- Press `<leader>ai` in Normal mode to see a summary of all AI keymaps in a popup.
+
+---
+
+## 🙏 Credits
+
+This configuration is built on top of the amazing [LazyVim](https://github.com/LazyVim/LazyVim) starter template, which provides a modern, modular, and extensible Neovim setup. All credit for the base structure, plugin management, and many best practices goes to the LazyVim team and contributors.
+
+If you like this setup, please consider starring [LazyVim](https://github.com/LazyVim/LazyVim) and supporting their work!
+
+---
