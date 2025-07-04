@@ -86,8 +86,16 @@ choco install ollama
 ### AI Assistants
 | Keymap | Action |
 |--------|--------|
+| `<C-j>` | Next Copilot suggestion (Insert mode) |
+| `<C-k>` | Previous Copilot suggestion (Insert mode) |
+| `<C-l>` | Accept Copilot suggestion (Insert mode) |
+| `<C-h>` | Dismiss Copilot suggestion (Insert mode) |
+| `<leader>cp` | Open Copilot panel |
+| `<leader>cs` | Show Copilot status |
 | `<leader>cc` | Open Copilot Chat |
 | `<leader>ct` | Toggle Copilot Chat |
+| `<C-;>` | Accept Codeium suggestion (Insert mode) |
+| `<leader>ai` | Show AI keymaps help |
 
 ### Development Tools
 | Keymap | Action |

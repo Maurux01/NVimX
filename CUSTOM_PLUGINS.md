@@ -7,7 +7,13 @@ Esta configuración extiende LazyVim con plugins adicionales para IA, resaltado 
 ### GitHub Copilot
 - **Plugin**: `github/copilot.vim`
 - **Descripción**: Autocompletado inteligente de código
-- **Configuración**: Deshabilitado el mapeo de Tab para evitar conflictos
+- **Keymaps**:
+  - `<C-j>` - Siguiente sugerencia (Insert mode)
+  - `<C-k>` - Sugerencia anterior (Insert mode)
+  - `<C-l>` - Aceptar sugerencia (Insert mode)
+  - `<C-h>` - Descartar sugerencia (Insert mode)
+  - `<leader>cp` - Panel de Copilot (Normal mode)
+  - `<leader>cs` - Estado de Copilot (Normal mode)
 
 ### Copilot Chat
 - **Plugin**: `CopilotC-Nvim/CopilotChat.nvim`
@@ -20,6 +26,8 @@ Esta configuración extiende LazyVim con plugins adicionales para IA, resaltado 
 ### Codeium (Alternativa)
 - **Plugin**: `Exafunction/codeium.nvim`
 - **Descripción**: Asistente de IA gratuito sin autenticación requerida
+- **Keymaps**:
+  - `<C-;>` - Aceptar sugerencia (Insert mode)
 - **Ventajas**: No requiere cuenta de GitHub, funciona offline
 
 ## 🎨 Syntax Highlighting & Brackets
@@ -48,7 +56,21 @@ Esta configuración extiende LazyVim con plugins adicionales para IA, resaltado 
 4. **Dracula** - Tema oscuro con colores vibrantes
 5. **One Dark** - Tema inspirado en Atom
 
-## ⌨️ Theme Keymaps
+## ⌨️ Keymaps
+
+### 🤖 AI Assistants
+- `<C-j>` - Siguiente sugerencia de Copilot (Insert mode)
+- `<C-k>` - Sugerencia anterior de Copilot (Insert mode)
+- `<C-l>` - Aceptar sugerencia de Copilot (Insert mode)
+- `<C-h>` - Descartar sugerencia de Copilot (Insert mode)
+- `<leader>cp` - Panel de Copilot (Normal mode)
+- `<leader>cs` - Estado de Copilot (Normal mode)
+- `<leader>cc` - Abrir Copilot Chat
+- `<leader>ct` - Toggle Copilot Chat
+- `<C-;>` - Aceptar sugerencia de Codeium (Insert mode)
+- `<leader>ai` - Mostrar ayuda de keymaps de IA
+
+### 🎨 Theme Keymaps
 
 ### Cambio de Temas
 - `<leader>tn` - Siguiente tema (cicla entre todos)
