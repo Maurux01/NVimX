@@ -1,46 +1,67 @@
 # 🚀 Enhanced Neovim Configuration
 
-A powerful Neovim configuration built on top of [LazyVim](https://github.com/LazyVim/LazyVim) with AI assistants, enhanced syntax highlighting, rainbow brackets, and beautiful dark themes.
+A powerful Neovim configuration built on top of [LazyVim](https://github.com/LazyVim/LazyVim) with AI assistants, enhanced syntax highlighting, rainbow brackets, beautiful dark themes, and comprehensive buffer navigation.
 
 ![Neovim](https://img.shields.io/badge/Neovim-57A143?style=for-the-badge&logo=neovim&logoColor=white)
 ![Lua](https://img.shields.io/badge/Lua-2C2D72?style=for-the-badge&logo=lua&logoColor=white)
 ![LazyVim](https://img.shields.io/badge/LazyVim-57A143?style=for-the-badge&logo=neovim&logoColor=white)
 
+## 📋 Table of Contents
+
+- [✨ Features](#-features)
+- [🚀 Quick Start](#-quick-start)
+- [⌨️ Keymaps](#️-keymaps)
+- [🎨 Theme Gallery](#-theme-gallery)
+- [🔧 Configuration](#-configuration)
+- [🚨 Troubleshooting](#-troubleshooting)
+- [📁 File Structure](#-file-structure)
+
+---
+
 ## ✨ Features
 
 ### 🤖 AI-Powered Development
-- **GitHub Copilot** - Intelligent code completion
-- **Copilot Chat** - Integrated AI chat assistant
+- **GitHub Copilot** - Intelligent code completion with comprehensive keymaps
+- **Copilot Chat** - Integrated AI chat assistant (requires Ollama)
 - **Codeium** - Free AI assistant (no authentication required)
 
 ### 🎨 Enhanced Visual Experience
-- **Rainbow Delimiters** - Colorful brackets and parentheses
-- **Indent Guides** - Visual indentation indicators
+- **Rainbow Delimiters** - Colorful brackets and parentheses with 7 different colors
+- **Indent Guides** - Visual indentation indicators with context highlighting
 - **Enhanced Treesitter** - Superior syntax highlighting for 20+ languages
 
-### 🌙 Beautiful Dark Themes
+### 🌙 Beautiful Dark Themes (14 Total)
 - **Tokyo Night** - Elegant and modern dark theme
 - **Catppuccin** - Soothing mocha-flavored theme
 - **Gruvbox** - Classic high-contrast theme
 - **Dracula** - Vibrant and eye-catching theme
 - **One Dark** - Atom-inspired dark theme
 - **Material** - Google Material Design inspired theme
-- **Nightfox** - Soft, warm dark theme
+- **Nightfox** - Soft, warm dark theme for night sessions
 - **Kanagawa** - Traditional Japanese-inspired theme
 - **Rose Pine** - All natural pine, soot, and lilac theme
 - **Monokai Pro** - Professional dark theme with vibrant colors
-- **Sonokai** - High contrast and Vivid color theme
+- **Sonokai** - High contrast and vivid color theme
 - **Edge** - Clean, elegant and colorful theme
 - **Oceanic Next** - Dark theme based on Oceanic Next
 - **Palenight** - Soothing dark theme for the evening
-- **🔄 Persistent** - Your theme choice is automatically saved and restored between sessions
+
+**🔄 Persistent Theme System** - Your theme choice is automatically saved and restored between sessions
 
 ### 🛠️ Developer Tools
-- **Smart Comments** - Intelligent commenting system
+- **Smart Comments** - Intelligent commenting system with `gc` and `gcc`
 - **Auto Pairs** - Automatic bracket/parenthesis closing
 - **Advanced Search** - Powerful search and replace with Spectre
-- **Floating Terminal** - Integrated terminal experience
-- **Modern File Explorer** - Neo-tree file browser
+- **Floating Terminal** - Integrated terminal experience with `<C-\>`
+- **Modern File Explorer** - Neo-tree file browser with `<leader>e`
+
+### 📁 Enhanced Buffer Navigation
+- **Tab Navigation** - Use `<Tab>` and `<S-Tab>` to cycle through buffers
+- **Numbered Buffers** - Quick access to buffers 1-10 with `<leader>1-9` and `<leader>0`
+- **Buffer Management** - Save, close, and manage buffers efficiently
+- **Telescope Integration** - Find buffers with `<leader>bf`
+
+---
 
 ## 🚀 Quick Start
 
@@ -81,12 +102,14 @@ curl -fsSL https://ollama.ai/install.sh | sh
 choco install ollama
 ```
 
+---
+
 ## ⌨️ Keymaps
 
-### Theme Switching (Persistent)
+### 🎨 Theme Switching (Persistent)
 | Keymap | Action |
 |--------|--------|
-| `<leader>tn` | Cycle to next theme (saved) |
+| `<leader>tn` | **Cycle to next theme** (saved automatically) |
 | `<leader>tt` | Tokyo Night theme (saved) |
 | `<leader>tc` | Catppuccin theme (saved) |
 | `<leader>tg` | Gruvbox theme (saved) |
@@ -104,7 +127,7 @@ choco install ollama
 | `<leader>t?` | Show current theme status |
 | `<leader>tl` | List all available themes |
 
-### AI Assistants
+### 🤖 AI Assistants
 | Keymap | Action |
 |--------|--------|
 | `<C-j>` | Next Copilot suggestion (Insert mode) |
@@ -118,40 +141,80 @@ choco install ollama
 | `<C-;>` | Accept Codeium suggestion (Insert mode) |
 | `<leader>ai` | Show AI keymaps help |
 
-### Development Tools
+### 📁 Buffer Navigation
 | Keymap | Action |
 |--------|--------|
-| `<leader>e` | Toggle file explorer |
-| `<leader>sr` | Advanced search and replace |
+| `<Tab>` | **Next buffer** |
+| `<S-Tab>` | **Previous buffer** |
+| `<leader>bb` | Switch to other buffer |
+| `<leader>1-9` | Go to buffer 1-9 |
+| `<leader>0` | Go to buffer 10 |
+| `<leader>bf` | Find buffer with Telescope |
+| `<leader>bl` | List all buffers |
+| `<leader>bn` | New buffer |
+| `<leader>bs` | Save current buffer |
+| `<leader>ba` | Save all buffers |
+| `<leader>bd` | Close buffer |
+| `<leader>bD` | Force close buffer |
+| `<leader>bo` | Close other buffers |
+| `<leader>bi` | Show buffer info |
+| `<leader>bh` | Show buffer navigation help |
+
+### 🛠️ Development Tools
+| Keymap | Action |
+|--------|--------|
+| `<leader>e` | Toggle file explorer (Neo-tree) |
+| `<leader>sr` | Advanced search and replace (Spectre) |
 | `<C-\>` | Toggle floating terminal |
 | `gc` | Toggle line comment |
 | `gcc` | Toggle current line comment |
 
-### Buffer Navigation
+### 🔧 Debug & Testing
 | Keymap | Action |
 |--------|--------|
-| `<Tab>` | Next buffer |
-| `<S-Tab>` | Previous buffer |
-| `<leader>bb` | Switch to other buffer |
-| `<leader>bf` | Find buffer with Telescope |
-| `<leader>1-9` | Go to buffer 1-9 |
-| `<leader>0` | Go to buffer 10 |
-| `<leader>bd` | Close buffer |
-| `<leader>bh` | Show buffer navigation help |
+| `<leader>debug` | Debug theme keymaps |
+| `<leader>leader` | Check leader key |
+| `<leader>direct` | Test direct theme change |
+| `<leader>test` | Test theme change |
+| `<leader>cycle` | Simple theme cycle |
+| `<leader>check` | Check if leader key works |
 
 ### LazyVim Defaults
 All standard LazyVim keymaps are preserved. Press `<leader>` to see available commands.
 
+---
+
 ## 🎨 Theme Gallery
 
-### Tokyo Night
-![Tokyo Night](https://user-images.githubusercontent.com/292349/115313600-feff9000-a12b-11eb-9a05-9c49c9c0e5c6.png)
+### Original Themes
+| Theme | Keybind | Description |
+|-------|---------|-------------|
+| **Tokyo Night** | `<leader>tt` | Elegant and modern |
+| **Catppuccin** | `<leader>tc` | Suave with "mocha" flavor |
+| **Gruvbox** | `<leader>tg` | Classic with high contrast |
+| **Dracula** | `<leader>td` | Vibrant and eye-catching |
+| **One Dark** | `<leader>to` | Atom-inspired |
 
-### Catppuccin
-![Catppuccin](https://user-images.githubusercontent.com/32014449/148675820-aa8b5b8c-8b8c-4c8c-8b8c-8b8c4c8c8b8c.png)
+### New Themes
+| Theme | Keybind | Description |
+|-------|---------|-------------|
+| **Material** | `<leader>tm` | Google Material Design |
+| **Nightfox** | `<leader>tf` | Soft and warm for nights |
+| **Kanagawa** | `<leader>tk` | Japanese art inspired |
+| **Rose Pine** | `<leader>tr` | Natural colors |
+| **Monokai Pro** | `<leader>tp` | Professional with vibrant colors |
+| **Sonokai** | `<leader>ts` | High contrast and vivid |
+| **Edge** | `<leader>te` | Clean, elegant and colorful |
+| **Oceanic Next** | `<leader>t.` | Relaxing oceanic palette |
+| **Palenight** | `<leader>ta` | Soothing for evenings |
 
-### Gruvbox
-![Gruvbox](https://user-images.githubusercontent.com/292349/115313600-feff9000-a12b-11eb-9a05-9c49c9c0e5c6.png)
+### Theme Usage Recommendations
+- **Daily Development**: Tokyo Night, Catppuccin, Material
+- **Night Sessions**: Nightfox, Palenight, Kanagawa
+- **Creative Design**: Rose Pine, Dracula, Monokai Pro
+- **Reading**: One Dark, Edge, Gruvbox
+
+---
 
 ## 🔧 Configuration
 
@@ -162,12 +225,17 @@ All standard LazyVim keymaps are preserved. Press `<leader>` to see available co
 ├── lua/
 │   ├── config/
 │   │   ├── autocmds.lua     # Auto commands
-│   │   ├── keymaps.lua      # Key mappings
+│   │   ├── keymaps.lua      # Main key mappings loader
 │   │   ├── lazy.lua         # Lazy.nvim setup
 │   │   ├── options.lua      # Neovim options
-│   │   └── theme-keymaps.lua # Theme switching
+│   │   ├── theme-keymaps.lua # Theme switching system
+│   │   ├── ai-keymaps.lua   # AI assistant keymaps
+│   │   ├── buffer-keymaps.lua # Buffer navigation
+│   │   ├── theme-persistence.lua # Theme persistence
+│   │   ├── theme-debug.lua  # Theme debugging
+│   │   └── test-themes.lua  # Theme testing
 │   └── plugins/
-│       ├── custom.lua       # Custom plugins
+│       ├── custom.lua       # Custom plugins (777 lines)
 │       └── example.lua      # LazyVim examples
 ├── lazy-lock.json          # Plugin lock file
 └── README.md               # This file
@@ -190,10 +258,90 @@ return {
 ```
 
 #### Modifying Keymaps
-Edit `lua/config/theme-keymaps.lua` for theme-related keymaps or `lua/config/keymaps.lua` for general keymaps.
+- **Theme keymaps**: Edit `lua/config/theme-keymaps.lua`
+- **AI keymaps**: Edit `lua/config/ai-keymaps.lua`
+- **Buffer keymaps**: Edit `lua/config/buffer-keymaps.lua`
+- **General keymaps**: Edit `lua/config/keymaps.lua`
 
 #### Changing Options
 Edit `lua/config/options.lua` to modify Neovim options.
+
+---
+
+## 🚨 Troubleshooting
+
+### 🤖 AI Issues
+
+#### GitHub Authentication Error
+**Error**: `fatal error, we couldn't read username for github.com`
+
+**Solutions**:
+1. **For Copilot**: Ensure you have a valid subscription
+2. **For Copilot Chat**: Install `ollama` and run `ollama serve`
+3. **Alternative**: Use Codeium (free, no authentication required)
+
+#### AI Not Working
+1. **Check installation**: `:Lazy sync`
+2. **Check logs**: `:Lazy log`
+3. **Temporarily disable**: Comment plugins in `lua/plugins/custom.lua`
+
+### 🎨 Theme Issues
+
+#### Theme Not Changing
+1. **Check keybinds**: `<leader>debug`
+2. **Test direct**: `<leader>direct`
+3. **Check installation**: `:Lazy sync`
+
+#### Theme Not Saving
+1. **Check permissions**: `~/.local/share/nvim/`
+2. **Test manual**: `<leader>t?`
+3. **Check logs**: `:Lazy log`
+
+### 🔌 Plugin Issues
+
+#### Lazy.nvim Not Installing
+1. **Check connection**: Internet
+2. **Clean cache**: `:Lazy clean`
+3. **Sync**: `:Lazy sync`
+4. **Check logs**: `:Lazy log`
+
+#### Plugin Conflicts
+1. **Check duplicates**: `:Lazy check`
+2. **Disable conflicting**: `enabled = false`
+3. **Check dependencies**: Ensure they're installed
+
+### 🐛 General Issues
+
+#### Neovim Slow
+1. **Check startup time**: `:StartupTime`
+2. **Disable heavy plugins**: Comment in `custom.lua`
+3. **Use lazy loading**: `event = "VeryLazy"`
+
+#### Keymaps Not Working
+1. **Check leader**: `<leader>leader`
+2. **Check conflicts**: `:map <key>`
+3. **Restart Neovim**: To apply changes
+
+### 🔧 Debug Commands
+
+| Command | Action |
+|---------|--------|
+| `:checkhealth` | Check system health |
+| `:Lazy health` | Check plugins |
+| `:Lazy log` | View plugin logs |
+| `:Lazy sync` | Sync plugins |
+| `<leader>debug` | Debug theme keybinds |
+
+### 📝 Information for Bug Reports
+
+When reporting issues, include:
+1. **Neovim version**: `nvim --version`
+2. **Operating system**: Windows/macOS/Linux
+3. **Error messages**: Exact copy
+4. **Steps to reproduce**: What you did
+5. **Debug info**: `:checkhealth`
+
+---
 
 ## 🎯 Supported Languages
 
@@ -204,32 +352,38 @@ Enhanced syntax highlighting for:
 - **Markup**: Markdown, Gitignore
 - **Shell**: Bash, HTTP
 
-## 🤝 Contributing
+---
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+## 💡 Usage Tips
 
-## 📝 License
+### 🎯 Recommended Workflow
+1. **Start Neovim** and wait for plugins to load
+2. **Use Tab** to navigate between buffers quickly
+3. **Change themes** with `<leader>tn` to explore
+4. **Use AI** for autocompletion and assistance
+5. **Save work** with `<leader>bs` or `<leader>ba`
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+### 🔧 Customization Tips
+- **Add plugins**: Edit `lua/plugins/custom.lua`
+- **Modify keymaps**: Edit files in `lua/config/`
+- **Change options**: Edit `lua/config/options.lua`
+- **Custom themes**: Modify `lua/plugins/custom.lua`
 
-## 🙏 Acknowledgments
+### 🎨 Theme Selection Tips
+- **Daily development**: Tokyo Night, Catppuccin, Material
+- **Night sessions**: Nightfox, Palenight, Kanagawa
+- **Creative design**: Rose Pine, Dracula, Monokai Pro
+- **Reading**: One Dark, Edge, Gruvbox
 
-- [LazyVim](https://github.com/LazyVim/LazyVim) - The amazing base configuration
-- [Lazy.nvim](https://github.com/folke/lazy.nvim) - The plugin manager
-- All plugin authors for their excellent work
+---
 
-## 🔗 Links
+## 📚 Additional Resources
 
-- [Neovim](https://neovim.io/)
-- [LazyVim Documentation](https://lazyvim.github.io/)
-- [Lazy.nvim](https://github.com/folke/lazy.nvim)
+- [LazyVim Documentation](https://www.lazyvim.org/)
+- [Neovim Documentation](https://neovim.io/doc/)
 - [GitHub Copilot](https://github.com/features/copilot)
 - [Ollama](https://ollama.ai/)
 
 ---
 
-⭐ **Star this repository if you find it helpful!**
+💡 **Tip**: Press `<leader>bh` for buffer navigation help and `<leader>t?` to see current theme status.
