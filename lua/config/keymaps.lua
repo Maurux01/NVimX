@@ -3,7 +3,7 @@
 -- Add any additional keymaps here
 
 -- Load theme keymaps
-require("config.theme-keymaps")
+require("config.theme-keymaps-new")
 
 -- Load AI keymaps
 require("config.ai-keymaps")

@@ -933,4 +933,16 @@ return {
     event = "InsertEnter",
     opts = {},
   },
-} 
+}
+
+-- Filtrar notificaciones de healthcheck de which-key
+if pcall(require, "notify") then
+  local notify = require("notify")
+  local old = notify
+  vim.notify = function(msg, ...)
+    if type(msg) == "string" and msg:find('No healthcheck found for "which-keys"') then
+      return
+    end
+    return old(msg, ...)
+  end
+end 
