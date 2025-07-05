@@ -926,7 +926,7 @@ return {
     },
     cmd = "Neotree",
     keys = {
-      { "<leader>e", "<cmd>Neotree toggle<cr>", desc = "Explorer" },
+      { "<leader>e", "<cmd>Neotree toggle dir=%:p:h<cr>", desc = "Explorer Snacks (cwd)" },
     },
     opts = {
       sources = { "filesystem", "buffers", "git_status", "document_symbols" },
