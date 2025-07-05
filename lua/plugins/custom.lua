@@ -142,12 +142,10 @@ return {
   {
     "lukas-reineke/indent-blankline.nvim",
     event = "VeryLazy",
+    main = "ibl",
     opts = {
-      char = "│",
-      tab_char = "│",
-      show_trailing_blankline_indent = false,
-      show_current_context = true,
-      show_current_context_start = true,
+      indent = { char = "│" },
+      scope = { enabled = true },
     },
   },
 
@@ -707,33 +705,10 @@ return {
     "NTBBloodbath/doom-one.nvim",
     lazy = false,
     priority = 1000,
-    config = function()
-      require("doom-one").setup({
-        cursor_coloring = false,
-        terminal_colors = true,
-        italic_comments = true,
-        enable_treesitter = true,
-        transparent_background = false,
-        pumblend = {
-          enable = false,
-          transparency_amount = 20,
-        },
-        plugins_integrations = {
-          neorg = true,
-          barbar = true,
-          bufferline = true,
-          gitgutter = true,
-          gitsigns = true,
-          telescope = true,
-          neogit = true,
-          nvim_tree = true,
-          which_key = true,
-          indent_blankline = true,
-          vim_illuminate = true,
-          lspsaga = true,
-        },
-      })
-    end,
+    -- No se requiere configuración especial, solo cargar el tema si se desea
+    -- config = function()
+    --   vim.cmd.colorscheme("doom-one")
+    -- end,
   },
 
   -- Carbonfox (Part of Nightfox family)
@@ -778,12 +753,13 @@ return {
     "savq/melange-nvim",
     lazy = false,
     priority = 1000,
-    opts = {
-      transparent_background = false,
-      dim_inactive_windows = false,
-      term_colors = true,
-      plugin_default = "auto",
-      plugins = {
+    config = function()
+      vim.g.melange_transparent_background = false
+      vim.g.melange_dim_inactive_windows = false
+      vim.g.melange_term_colors = true
+      vim.g.melange_plugin_default = "auto"
+      -- Plugins
+      vim.g.melange_plugins = {
         indent_blankline = { enabled = true },
         nvim_tree = { enabled = true },
         neogit = { enabled = true },
@@ -803,8 +779,8 @@ return {
         nvim_ts_rainbow = { enabled = true },
         ts_rainbow = { enabled = true },
         vim_illuminate = { enabled = true },
-      },
-    },
+      }
+    end,
   },
 
   -- Modus Vivendi (Accessible dark theme)
@@ -852,11 +828,10 @@ return {
   {
     "folke/which-key.nvim",
     opts = function(_, opts)
-      -- Ensure defaults table exists
-      opts.defaults = opts.defaults or {}
-      
+      -- Ensure spec table exists
+      opts.spec = opts.spec or {}
       -- Add theme switching to which-key
-      opts.defaults["<leader>t"] = { name = "Themes" }
+      opts.spec["<leader>t"] = { name = "Themes" }
     end,
   },
 
@@ -950,5 +925,12 @@ return {
         },
       },
     },
+  },
+
+  -- hrsh7th/nvim-cmp
+  {
+    "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
+    opts = {},
   },
 } 

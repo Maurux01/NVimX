@@ -72,7 +72,7 @@ end
 local function set_theme(theme_name)
   if vim.tbl_contains(themes, theme_name) then
     vim.cmd.colorscheme(theme_name)
-    current_theme_index = vim.tbl_index(themes, theme_name) or 1
+    current_theme_index = tbl_index(themes, theme_name) or 1
     save_theme(theme_name)
     vim.notify("Switched to theme: " .. theme_name .. " (saved)", vim.log.levels.INFO)
   else
@@ -155,7 +155,7 @@ vim.keymap.set("n", "<leader>tl", list_themes, { desc = "List Themes" })
 -- Initialize current theme index based on saved theme
 local function init_theme_index()
   local saved_theme = get_current_theme()
-  current_theme_index = vim.tbl_index(themes, saved_theme) or 1
+  current_theme_index = tbl_index(themes, saved_theme) or 1
 end
 
 -- Initialize on startup
@@ -168,4 +168,13 @@ vim.api.nvim_create_autocmd("VimEnter", {
     vim.cmd.colorscheme(saved_theme)
   end,
   priority = 1000,
-}) 
+})
+
+local function tbl_index(tbl, value)
+  for i, v in ipairs(tbl) do
+    if v == value then
+      return i
+    end
+  end
+  return nil
+end 
