@@ -20,6 +20,7 @@ A powerful Neovim configuration built on top of [LazyVim](https://github.com/Laz
 
 ## ✨ Features
 
+
 ### 🤖 AI-Powered Development
 - **GitHub Copilot** - Intelligent code completion with comprehensive keymaps
 - **Copilot Chat** - Integrated AI chat assistant (requires Ollama)
