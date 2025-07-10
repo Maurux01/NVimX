@@ -3,70 +3,20 @@ return {
   -- AI ASSISTANTS
   -- ============================================================================
   
-  -- GitHub Copilot
+  -- Avante.nvim (AI Assistant)
   {
-    "github/copilot.vim",
+    "AvanteAI/avante.nvim",
     event = "InsertEnter",
     config = function()
-      vim.g.copilot_no_tab_map = true
-      vim.g.copilot_assume_mapped = true
-      vim.g.copilot_tab_fallback = ""
-      
-      -- Copilot keymaps
-      vim.keymap.set("i", "<C-j>", "<Plug>(copilot-next)", { desc = "Copilot Next" })
-      vim.keymap.set("i", "<C-k>", "<Plug>(copilot-previous)", { desc = "Copilot Previous" })
-      vim.keymap.set("i", "<C-l>", "<Plug>(copilot-accept)", { desc = "Copilot Accept" })
-      vim.keymap.set("i", "<C-h>", "<Plug>(copilot-dismiss)", { desc = "Copilot Dismiss" })
-      
-      -- Normal mode keymaps for Copilot
-      vim.keymap.set("n", "<leader>cp", "<cmd>Copilot panel<cr>", { desc = "Copilot Panel" })
-      vim.keymap.set("n", "<leader>cs", "<cmd>Copilot status<cr>", { desc = "Copilot Status" })
-    end,
-  },
-
-  -- Copilot Chat
-  {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    opts = {
-      show_help = "yes",
-      debug = false,
-      disable_extra_info = 'no',
-      language = "English",
-      model = "gpt-4",
-      temperature = 0.1,
-    },
-    build = function()
-      vim.notify("Please install 'ollama' to use CopilotChat.nvim")
-    end,
-    cmd = "CopilotChat",
-    keys = {
-      { "<leader>cc", "<cmd>CopilotChat<cr>", desc = "Copilot Chat" },
-      { "<leader>ct", "<cmd>CopilotChatToggle<cr>", desc = "Toggle Copilot Chat" },
-    },
-  },
-
-  -- Alternative: Cursor AI (if you prefer)
-  -- Disabled due to GitHub authentication issues
-  -- {
-  --   "cursor-ai/cursor.nvim",
-  --   event = "VeryLazy",
-  --   config = function()
-  --     require("cursor").setup({
-  --       -- Configuration options
-  --     })
-  --   end,
-  -- },
-
-  -- Alternative AI: Codeium (free, no auth required)
-  {
-    "Exafunction/codeium.nvim",
-    event = "InsertEnter",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "hrsh7th/nvim-cmp",
-    },
-    config = function()
-      require("codeium").setup({})
+      require("avante").setup({
+        -- Puedes personalizar la configuración aquí
+      })
+      -- Keymap para abrir el panel de Avante
+      vim.keymap.set("n", "<leader>aa", ":AvantePanel<CR>", { desc = "Avante Panel" })
+      -- Keymap para aceptar sugerencia de Avante (ejemplo)
+      vim.keymap.set("i", "<C-a>", function()
+        require("avante").accept_suggestion()
+      end, { desc = "Avante Accept Suggestion" })
     end,
   },
 
@@ -934,18 +884,6 @@ return {
     opts = {},
   },
 }
--- ...existing code...
-use {
-  'hrsh7th/nvim-cmp',
-  requires = {
-    'hrsh7th/cmp-nvim-lsp',
-    'hrsh7th/cmp-buffer',
-    'hrsh7th/cmp-path',
-    'hrsh7th/cmp-cmdline',
-    'L3MON4D3/LuaSnip'
-  }
-}
--- ...existing code...
 
 -- Filtrar notificaciones de healthcheck de which-key
 if pcall(require, "notify") then
@@ -957,4 +895,4 @@ if pcall(require, "notify") then
     end
     return old(msg, ...)
   end
-end 
+end
