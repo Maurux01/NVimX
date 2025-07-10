@@ -13,10 +13,60 @@ return {
       })
       -- Keymap para abrir el panel de Avante
       vim.keymap.set("n", "<leader>aa", ":AvantePanel<CR>", { desc = "Avante Panel" })
-      -- Keymap para aceptar sugerencia de Avante (ejemplo)
+      -- Keymap para aceptar sugerencia de Avante
       vim.keymap.set("i", "<C-a>", function()
         require("avante").accept_suggestion()
       end, { desc = "Avante Accept Suggestion" })
+    end,
+  },
+
+  -- Terminal integrada con keybinds
+  {
+    "akinsho/toggleterm.nvim",
+    event = "VeryLazy",
+    opts = {
+      size = 20,
+      open_mapping = [[<C-\>]],
+      direction = "float",
+      shade_terminals = true,
+      start_in_insert = true,
+      persist_size = true,
+      close_on_exit = true,
+      shell = vim.o.shell,
+    },
+    config = function(_, opts)
+      require("toggleterm").setup(opts)
+      -- Keybinds para abrir/cerrar terminal
+      vim.keymap.set("n", "<leader>tt", ":ToggleTerm<CR>", { desc = "Abrir Terminal Flotante" })
+      vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { desc = "Salir de Terminal" })
+    end,
+  },
+
+  -- Mostrar errores en la línea (virtual text y lsp_lines)
+  {
+    "https://github.com/Maan2003/lsp_lines.nvim",
+    event = "LspAttach",
+    config = function()
+      require("lsp_lines").setup()
+      vim.diagnostic.config({
+        virtual_text = false,
+        virtual_lines = true,
+      })
+      vim.keymap.set(
+        "n",
+        "<leader>le",
+        require("lsp_lines").toggle,
+        { desc = "Alternar errores en línea (lsp_lines)" }
+      )
+    end,
+  },
+
+  -- Captura de pantalla/código (carbon.nvim)
+  {
+    "ellisonleao/carbon-now.nvim",
+    cmd = "CarbonNow",
+    config = function()
+      vim.keymap.set("v", "<leader>sc", ":CarbonNow<CR>", { desc = "Captura de código (CarbonNow)" })
     end,
   },
 
@@ -882,6 +932,43 @@ return {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
     opts = {},
+  },
+
+  -- Trouble.nvim: Visualiza errores, warnings y referencias de LSP
+  {
+    "folke/trouble.nvim",
+    cmd = "TroubleToggle",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("trouble").setup({
+        use_diagnostic_signs = true
+      })
+      vim.keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<cr>", { desc = "Toggle Trouble" })
+      vim.keymap.set("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", { desc = "Workspace Diagnostics" })
+      vim.keymap.set("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", { desc = "Document Diagnostics" })
+      vim.keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", { desc = "Quickfix List" })
+      vim.keymap.set("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", { desc = "Location List" })
+      vim.keymap.set("n", "gR", "<cmd>TroubleToggle lsp_references<cr>", { desc = "LSP References" })
+    end,
+  },
+
+  -- emmet-ls: Expansión rápida de HTML/CSS con Emmet
+  {
+    "aca/emmet-ls",
+    ft = { "html", "css", "typescriptreact", "javascriptreact", "vue", "svelte" },
+    config = function()
+      require("lspconfig").emmet_ls.setup({
+        filetypes = { "html", "css", "typescriptreact", "javascriptreact", "vue", "svelte" },
+        init_options = {
+          html = {
+            options = {
+              -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts
+              ['bem.enabled'] = true,
+            },
+          },
+        },
+      })
+    end,
   },
 }
 
