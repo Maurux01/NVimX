@@ -122,8 +122,8 @@ keymap("t", "<C-j>", "<cmd>wincmd j<cr>", { desc = "Go to lower window" })
 keymap("t", "<C-k>", "<cmd>wincmd k<cr>", { desc = "Go to upper window" })
 keymap("t", "<C-l>", "<cmd>wincmd l<cr>", { desc = "Go to right window" })
 
--- File explorer (Oil)
-keymap("n", "<leader>e", "<cmd>Oil<cr>", { desc = "Oil Explorer" })
+-- File explorer (LazyVim native)
+keymap("n", "<leader>e", "<cmd>Telescope find_files<cr>", { desc = "Find files (LazyVim)" })
 
 -- Lazy
 keymap("n", "<leader>E", "<cmd>Lazy<cr>", { desc = "Open Lazy (Plugin Manager)" })
