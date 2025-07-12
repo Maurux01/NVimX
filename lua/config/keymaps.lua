@@ -151,6 +151,56 @@ keymap("n", "<leader>gb", "<cmd>Git blame<cr>", { desc = "Git blame" })
 keymap("n", "<leader>gd", "<cmd>Gvdiffsplit<cr>", { desc = "Git diff" })
 keymap("n", "<leader>gs", "<cmd>Git<cr>", { desc = "Git status" })
 
+-- LazyGit
+keymap("n", "<leader>gg", "<cmd>LazyGit<cr>", { desc = "LazyGit" })
+keymap("n", "<leader>gc", "<cmd>LazyGitConfig<cr>", { desc = "LazyGit Config" })
+keymap("n", "<leader>gf", "<cmd>LazyGitFilter<cr>", { desc = "LazyGit Filter" })
+keymap("n", "<leader>gl", "<cmd>LazyGitFilterCurrentFile<cr>", { desc = "LazyGit Filter Current File" })
+
+-- Git Signs
+keymap("n", "]c", function()
+  if vim.wo.diff then
+    return "]c"
+  end
+  vim.schedule(function()
+    require("gitsigns").next_hunk()
+  end)
+  return "<Ignore>"
+end, { expr = true, desc = "Next Git hunk" })
+
+keymap("n", "[c", function()
+  if vim.wo.diff then
+    return "[c"
+  end
+  vim.schedule(function()
+    require("gitsigns").prev_hunk()
+  end)
+  return "<Ignore>"
+end, { expr = true, desc = "Previous Git hunk" })
+
+keymap("n", "<leader>rh", "<cmd>Gitsigns reset_hunk<cr>", { desc = "Reset Git hunk" })
+keymap("n", "<leader>ph", "<cmd>Gitsigns preview_hunk<cr>", { desc = "Preview Git hunk" })
+keymap("n", "<leader>tb", "<cmd>Gitsigns toggle_current_line_blame<cr>", { desc = "Toggle Git blame" })
+keymap("n", "<leader>td", "<cmd>Gitsigns toggle_deleted<cr>", { desc = "Toggle Git deleted" })
+
+-- Git Conflict Resolution
+keymap("n", "<leader>gco", "<cmd>GitConflictChooseOurs<cr>", { desc = "Choose Ours" })
+keymap("n", "<leader>gct", "<cmd>GitConflictChooseTheirs<cr>", { desc = "Choose Theirs" })
+keymap("n", "<leader>gcb", "<cmd>GitConflictChooseBoth<cr>", { desc = "Choose Both" })
+keymap("n", "<leader>gcn", "<cmd>GitConflictChooseNone<cr>", { desc = "Choose None" })
+keymap("n", "<leader>gcp", "<cmd>GitConflictPrevConflict<cr>", { desc = "Previous Conflict" })
+keymap("n", "<leader>gcn", "<cmd>GitConflictNextConflict<cr>", { desc = "Next Conflict" })
+
+-- LazyDocker
+keymap("n", "<leader>dd", "<cmd>LazyDocker<cr>", { desc = "LazyDocker" })
+keymap("n", "<leader>dc", "<cmd>LazyDockerConfig<cr>", { desc = "LazyDocker Config" })
+
+-- Docker Telescope
+keymap("n", "<leader>fd", "<cmd>Telescope docker containers<cr>", { desc = "Docker containers" })
+keymap("n", "<leader>fi", "<cmd>Telescope docker images<cr>", { desc = "Docker images" })
+keymap("n", "<leader>fv", "<cmd>Telescope docker volumes<cr>", { desc = "Docker volumes" })
+keymap("n", "<leader>fn", "<cmd>Telescope docker networks<cr>", { desc = "Docker networks" })
+
 -- Quick save and quit
 keymap("n", "<leader>w", "<cmd>w<cr>", { desc = "Save" })
 keymap("n", "<leader>W", "<cmd>wa<cr>", { desc = "Save all" })

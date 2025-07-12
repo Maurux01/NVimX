@@ -207,6 +207,81 @@ if ! command -v pkg-config &> /dev/null; then
     fi
 fi
 
+# Install LazyGit and LazyDocker
+print_status "Installing LazyGit and LazyDocker..."
+
+# Check for LazyGit
+if ! command -v lazygit &> /dev/null; then
+    print_warning "LazyGit not found. Installing..."
+    if command -v pacman &> /dev/null; then
+        sudo pacman -S lazygit --noconfirm
+    elif command -v apt &> /dev/null; then
+        # Add LazyGit repository for Ubuntu/Debian
+        LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+        curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+        tar xf lazygit.tar.gz lazygit
+        sudo install lazygit /usr/local/bin
+        rm lazygit lazygit.tar.gz
+    elif command -v yum &> /dev/null; then
+        # Add LazyGit repository for CentOS/RHEL
+        LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+        curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+        tar xf lazygit.tar.gz lazygit
+        sudo install lazygit /usr/local/bin
+        rm lazygit lazygit.tar.gz
+    else
+        print_error "Could not install LazyGit automatically. Please install it manually."
+    fi
+fi
+
+# Check for LazyDocker
+if ! command -v lazydocker &> /dev/null; then
+    print_warning "LazyDocker not found. Installing..."
+    if command -v pacman &> /dev/null; then
+        sudo pacman -S lazydocker --noconfirm
+    elif command -v apt &> /dev/null; then
+        # Add LazyDocker repository for Ubuntu/Debian
+        LAZYDOCKER_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazydocker/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+        curl -Lo lazydocker.tar.gz "https://github.com/jesseduffield/lazydocker/releases/latest/download/lazydocker_${LAZYDOCKER_VERSION}_Linux_x86_64.tar.gz"
+        tar xf lazydocker.tar.gz lazydocker
+        sudo install lazydocker /usr/local/bin
+        rm lazydocker lazydocker.tar.gz
+    elif command -v yum &> /dev/null; then
+        # Add LazyDocker repository for CentOS/RHEL
+        LAZYDOCKER_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazydocker/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+        curl -Lo lazydocker.tar.gz "https://github.com/jesseduffield/lazydocker/releases/latest/download/lazydocker_${LAZYDOCKER_VERSION}_Linux_x86_64.tar.gz"
+        tar xf lazydocker.tar.gz lazydocker
+        sudo install lazydocker /usr/local/bin
+        rm lazydocker lazydocker.tar.gz
+    else
+        print_error "Could not install LazyDocker automatically. Please install it manually."
+    fi
+fi
+
+# Check for Docker
+if ! command -v docker &> /dev/null; then
+    print_warning "Docker not found. Installing..."
+    if command -v pacman &> /dev/null; then
+        sudo pacman -S docker --noconfirm
+        sudo systemctl enable docker
+        sudo systemctl start docker
+        sudo usermod -aG docker $USER
+    elif command -v apt &> /dev/null; then
+        sudo apt update
+        sudo apt install docker.io -y
+        sudo systemctl enable docker
+        sudo systemctl start docker
+        sudo usermod -aG docker $USER
+    elif command -v yum &> /dev/null; then
+        sudo yum install docker -y
+        sudo systemctl enable docker
+        sudo systemctl start docker
+        sudo usermod -aG docker $USER
+    else
+        print_error "Could not install Docker automatically. Please install it manually."
+    fi
+fi
+
 # Create directories for captures
 print_status "Creating capture directories..."
 mkdir -p ~/Pictures
@@ -241,6 +316,8 @@ echo "• Code capture: ${YELLOW}<leader>ci${NC}"
 echo "• Screen recording: ${YELLOW}<leader>cr${NC}"
 echo "• AI assistant: ${YELLOW}<leader>ai${NC}"
 echo "• Code suggestions: ${YELLOW}<Tab>${NC}"
+echo "• LazyGit: ${YELLOW}<leader>gg${NC}"
+echo "• LazyDocker: ${YELLOW}<leader>dd${NC}"
 echo ""
 echo -e "${BLUE}Capture tools installed:${NC}"
 echo "• Screenshot tools (wl-screenshot/imagemagick)"
@@ -253,6 +330,13 @@ echo "• CopilotChat (requires cmake, ninja, pkg-config)"
 echo "• Codeium (free AI completion)"
 echo "• Tabnine (alternative AI completion)"
 echo "• Refactoring tools"
+echo ""
+echo -e "${BLUE}Git and Docker tools installed:${NC}"
+echo "• LazyGit (visual Git interface)"
+echo "• LazyDocker (visual Docker interface)"
+echo "• Docker (container management)"
+echo "• Git conflict resolution"
+echo "• Git blame and signs"
 echo ""
 echo -e "${BLUE}If you had a previous configuration, it was backed up to:${NC}"
 if [ -n "$BACKUP_DIR" ]; then

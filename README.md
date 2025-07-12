@@ -14,6 +14,7 @@ A modern Neovim configuration based on LazyVim with custom enhancements for web 
 - **Terminal**: Integrated terminal with ToggleTerm
 - **Sessions**: Automatic session management with persistence.nvim
 - **Code Capture**: Screenshot and screen recording capabilities
+- **AI Assistant**: GitHub Copilot, Codeium, and AI-powered code suggestions
 
 ## 🎨 Themes
 
@@ -131,6 +132,35 @@ A modern Neovim configuration based on LazyVim with custom enhancements for web 
 - `<leader>snl` - Noice last message
 - `<leader>snh` - Noice history
 - `<leader>sna` - Noice all
+
+### 🤖 AI Assistant & Code Suggestions
+
+#### **GitHub Copilot**
+- `<Tab>` - Accept suggestion
+- `<M-]>` - Next suggestion
+- `<M-[>` - Previous suggestion
+- `<C-]>` - Dismiss suggestion
+
+#### **Copilot Chat**
+- `<leader>ai` - Toggle Copilot Chat
+- `<leader>ae` - Explain code
+- `<leader>at` - Generate tests
+- `<leader>af` - Fix code
+- `<leader>ar` - Review code
+
+#### **Code Completion**
+- `<C-Space>` - Trigger completion
+- `<C-n>` - Next item
+- `<C-p>` - Previous item
+- `<C-e>` - Close completion
+- `<Tab>` - Accept completion or expand snippet
+- `<S-Tab>` - Previous completion or jump snippet
+
+#### **Refactoring**
+- `<leader>rr` - Select refactor
+- `<leader>rp` - Debug print
+- `<leader>rv` - Debug print variable
+- `<leader>rc` - Debug cleanup
 
 ### 📸 Code Capture & Recording
 
@@ -290,6 +320,9 @@ sudo pacman -S nodejs npm
 # Install capture tools
 sudo pacman -S wl-screenshot imagemagick wf-recorder ffmpeg bat highlight
 
+# Install AI assistant tools
+sudo pacman -S cmake ninja pkg-config
+
 # Install global npm packages
 npm install -g live-server typescript-language-server prettier
 ```
@@ -320,6 +353,13 @@ The installation scripts automatically:
 - **wl-screenshot/imagemagick** - Screenshot tools
 - **wf-recorder/ffmpeg** - Screen recording tools
 - **bat/highlight** - Syntax highlighting for code capture
+
+✅ **Installs AI Assistant Tools**
+- **cmake, ninja, pkg-config** - For CopilotChat compilation
+- **GitHub Copilot** - AI code completion (requires subscription)
+- **Codeium** - Free AI code completion
+- **Tabnine** - Alternative AI completion
+- **Refactoring tools** - AI-powered code refactoring
 
 ✅ **Installs Global Packages**
 - **live-server** - Development server for web projects
@@ -369,7 +409,9 @@ The installation scripts automatically:
 │       ├── toggleterm.lua   # Terminal
 │       ├── webdev.lua       # Web development
 │       ├── which-key.lua    # Key hints
-│       └── code-capture.lua # Code capture plugins
+│       ├── code-capture.lua # Code capture plugins
+│       ├── copilot.lua      # AI assistant plugins
+│       └── ai-assistant.lua # AI tools and suggestions
 ```
 
 ## 🔧 Configuration
@@ -397,6 +439,30 @@ Add your custom keymaps in `lua/config/keymaps.lua`:
 ```lua
 keymap("n", "<leader>custom", "<cmd>CustomCommand<cr>", { desc = "Custom command" })
 ```
+
+## 🤖 AI Assistant Features
+
+### Code Completion
+- **GitHub Copilot**: AI-powered code suggestions (requires subscription)
+- **Codeium**: Free AI code completion
+- **Tabnine**: Alternative AI completion
+- **LSP Integration**: Language-aware suggestions
+
+### AI Chat
+- **CopilotChat**: Interactive AI assistant for code explanations
+- **Code Review**: AI-powered code review and suggestions
+- **Test Generation**: Automatic test generation
+- **Bug Fixing**: AI-assisted bug detection and fixes
+
+### Refactoring
+- **Smart Refactoring**: AI-powered code refactoring
+- **Debug Helpers**: Automatic debug print statements
+- **Code Analysis**: Intelligent code analysis and suggestions
+
+### Snippets
+- **Friendly Snippets**: VSCode-compatible snippets
+- **LuaSnip**: Advanced snippet engine
+- **Auto-expansion**: Context-aware snippet expansion
 
 ## 📸 Code Capture Features
 
@@ -427,6 +493,7 @@ keymap("n", "<leader>custom", "<cmd>CustomCommand<cr>", { desc = "Custom command
 2. **LSP not working**: Install language servers (e.g., `npm install -g typescript-language-server`)
 3. **Telescope not finding files**: Install `fd` or `ripgrep`
 4. **Capture tools not working**: Install screenshot/recording tools manually
+5. **AI tools not working**: Install cmake, ninja, pkg-config for CopilotChat
 
 ### Debug Mode
 
@@ -447,6 +514,7 @@ nvim --log-level debug
 - ✅ Added one-line curl installation
 - ✅ Added comprehensive keybinds reference
 - ✅ Added code capture and screen recording functionality
+- ✅ Added AI assistant and code suggestions
 
 ## 🤝 Contributing
 
