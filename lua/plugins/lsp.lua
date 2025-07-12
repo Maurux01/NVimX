@@ -53,10 +53,62 @@ return {
           },
         },
       },
-      html = {},
-      cssls = {},
-      emmet_ls = {},
-      jsonls = {},
+      html = {
+        settings = {
+          html = {
+            format = {
+              templating = true,
+              wrapLineLength = 120,
+              wrapAttributes = "auto",
+            },
+            suggest = {
+              html5 = true,
+            },
+          },
+        },
+      },
+      cssls = {
+        settings = {
+          css = {
+            validate = true,
+            lint = {
+              unknownAtRules = "ignore",
+            },
+          },
+          less = {
+            validate = true,
+            lint = {
+              unknownAtRules = "ignore",
+            },
+          },
+          scss = {
+            validate = true,
+            lint = {
+              unknownAtRules = "ignore",
+            },
+          },
+        },
+      },
+      jsonls = {
+        settings = {
+          json = {
+            format = {
+              enable = true,
+            },
+            validate = { enable = true },
+          },
+        },
+      },
+      emmet_ls = {
+        filetypes = { "html", "css", "scss", "sass", "less", "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "php", "xml", "xsl", "haml", "jade", "pug", "slim", "erb", "ejs" },
+        init_options = {
+          html = {
+            options = {
+              ["bem.enabled"] = true,
+            },
+          },
+        },
+      },
       yamlls = {},
       marksman = {},
     },

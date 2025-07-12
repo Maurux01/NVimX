@@ -1,396 +1,461 @@
-# Neovim Config - Custom LazyVim
+# NVimX-1 - Neovim Configuration
 
-A blazing fast and modern Neovim configuration based on LazyVim, with all the great features you had before and many more.
+A modern Neovim configuration based on LazyVim with custom enhancements for web development and productivity.
 
-## 🚀 Features
+## ✨ Features
 
-### **LazyVim Base (already included):**
-- **LSP** - Full support for multiple languages
-- **Autocompletion** - nvim-cmp with LSP
-- **Snippets** - LuaSnip with friendly-snippets
-- **Telescope** - Fast file and text search
-- **nvim-tree** - File explorer
-- **toggleterm** - Integrated terminal
-- **gitsigns** - Git integration
-- **bufferline** - Buffer tabs
-- **lualine** - Modern statusline
-- **which-key** - Organized keybinds
-- **notify** - Elegant notifications
-- **surround** - Text surrounding
-- **comment** - Smart commenting
-- **autopairs** - Automatic bracket closing
-- **indent-blankline** - Visual indentation
-- **treesitter** - Modern syntax highlighting
+- **Modern UI**: Clean and intuitive interface with statusline and notifications
+- **Theme Switching**: Multiple themes with easy switching (Tokyo Night, Catppuccin, Gruvbox, Dracula, Habamax)
+- **File Explorer**: Oil.nvim for efficient file navigation
+- **Fuzzy Finder**: Telescope for files, grep, and more
+- **LSP Support**: Full language server protocol support for multiple languages
+- **Web Development**: Specialized tools for HTML, CSS, JavaScript, TypeScript
+- **Git Integration**: Git signs and blame functionality
+- **Terminal**: Integrated terminal with ToggleTerm
+- **Sessions**: Automatic session management with persistence.nvim
+- **Code Capture**: Screenshot and screen recording capabilities
 
-### **Added Customizations:**
-- **Tokyo Night** - Dark theme with pastel colors
-- **mini.animate** - Smooth animations
-- **Optimized keybinds** - Organized by letter
-- **Pastel colors** - For search, selection, etc.
-- **Enhanced LSP config** - With inlay hints
-- **Custom Telescope** - Better layout and keybinds
-- **Optimized nvim-tree** - Clean configuration
-- **Floating toggleterm** - Sleeker terminal
-- **Minimal gitsigns** - Only essentials
+## 🎨 Themes
 
-### **🆕 NEW FEATURES ADDED:**
+- Tokyo Night (default)
+- Catppuccin
+- Gruvbox
+- Dracula
+- Habamax
 
-#### **🔧 Debugging (DAP)**
-- **nvim-dap** - Full Debug Adapter Protocol support
-- **nvim-dap-ui** - Visual debugging interface
-- **nvim-dap-virtual-text** - Virtual text for debugging
-- **telescope-dap** - Telescope integration
-- **Multi-language support** - Python, JavaScript, Go, Rust
+### Theme Controls
+- `<leader>ut` - Toggle theme
+- `<leader>uN` - Next theme
+- `<leader>up` - Previous theme
+- `<leader>u1-5` - Quick theme selection
 
-#### **🧪 Testing Framework**
-- **Neotest** - Complete testing framework
-- **Adapters for multiple languages** - Python, JavaScript, Go, Rust
-- **DAP integration** - Test debugging
-- **Results view** - Test summary and output
+## ⌨️ Complete Keybinds Reference
 
-#### **💬 Enhanced Notifications**
-- **Noice** - Improved UI for commands and notifications
-- **nvim-notify** - Elegant, configurable notifications
-- **Message history** - Access previous messages
-- **Auto-dismiss** - Automatic notification closing
+### 🧭 Navigation & File Management
 
-#### **💾 Session Management**
-- **Persistence** - Automatic session saving
-- **Auto-session** - Automatic session management
-- **Smart restore** - Recover your previous work
-- **Branch sessions** - Separate sessions per Git branch
-
-#### **🌐 Web Development Tools**
-- **Emmet** - Fast HTML/CSS code expansion
-- **Prettier** - Automatic code formatting
-- **CSS/HTML LSP** - Enhanced web development support
-- **Colorizer** - Color highlighting in CSS/HTML
-- **Rainbow** - Colored parentheses and brackets
-
-#### **🔍 Improved Diagnostics View**
-- **Trouble** - Better error and warning view
-- **Organized diagnostics** - Better error navigation
-- **Improved quickfix** - Clearer error list
-- **Visual references** - LSP reference view
-
-#### **🎨 Theme Switcher**
-- **Multiple themes** - Tokyo Night, Catppuccin, Gruvbox, OneDark, Dracula
-- **Toggle with keybind** - `<leader>ut` to switch theme
-- **Change notification** - Visual feedback when changing theme
-
-#### **✨ Smooth Animations**
-- **mini.animate** - Animations for cursor, scroll, windows
-- **Smooth transitions** - Window open/close
-- **Animated scroll** - Smooth cursor movement
-- **Animated resize** - Animated resizing
-
-## ⌨️ Main Keybinds
-
-### **Navigation:**
+#### **Telescope (Fuzzy Finder)**
 - `<leader>ff` - Find files
-- `<leader>fg` - Find text
-- `<leader>e` - File explorer (Telescope)
+- `<leader>fg` - Live grep
+- `<leader>fb` - Buffers
+- `<leader>fh` - Help tags
+- `<leader>fo` - Old files
+- `<leader>fc` - Colorscheme
 - `<leader>fe` - File browser
 - `<leader>fr` - Resume last search
-- `<leader>t` - Terminal
 
-### **Buffers (Improved):**
+#### **File Explorer**
+- `<leader>e` - Oil explorer
+
+#### **Buffer Management**
 - `<C-l>` - Next buffer
 - `<C-h>` - Previous buffer
 - `<leader>bd` - Close buffer
 - `<leader>bp` - Pick buffer
 - `<leader>1-9` - Go to buffer 1-9
 
-### **Windows:**
-- `<C-w>h/j/k/l` - Navigate windows
+#### **Window Management**
+- `<C-w>h` - Go to left window
+- `<C-w>j` - Go to lower window
+- `<C-w>k` - Go to upper window
+- `<C-w>l` - Go to right window
 - `<C-w>v` - Vertical split
 - `<C-w>s` - Horizontal split
 - `<C-w>c` - Close window
 - `<C-w>o` - Close other windows
+- `<leader>sv` - Vertical split
+- `<leader>sh` - Horizontal split
+- `<leader>se` - Equalize windows
 
-### **LSP:**
-- `gd` - Go to definition
-- `gr` - References
-- `K` - Hover
-- `<leader>ca` - Code action
-- `<leader>rn` - Rename
-- `<leader>f` - Format
+#### **Window Resize**
+- `<Up>` - Increase window height
+- `<Down>` - Decrease window height
+- `<Left>` - Decrease window width
+- `<Right>` - Increase window width
 
-### **🔧 Debugging (DAP):**
-- `<leader>db` - Toggle breakpoint
-- `<leader>dc` - Continue
-- `<leader>di` - Step into
-- `<leader>do` - Step out
-- `<leader>dO` - Step over
-- `<leader>dt` - Terminate
-- `<leader>dr` - Toggle REPL
-
-### **🧪 Testing (Neotest):**
-- `<leader>tt` - Run test
-- `<leader>tf` - Run file tests
-- `<leader>td` - Debug test
-- `<leader>ts` - Test summary
-- `<leader>to` - Test output
-
-### **💾 Sessions:**
-- `<leader>qs` - Restore session
-- `<leader>ql` - Restore last session
-- `<leader>qd` - Don't save session
-
-### **🔍 Trouble (Diagnostics):**
-- `<leader>xx` - Diagnostics
-- `<leader>xw` - Workspace diagnostics
-- `<leader>xl` - Location list
-- `<leader>xq` - Quickfix list
-
-### **💬 Noice:**
-- `<leader>snl` - Last message
-- `<leader>snh` - History
-- `<leader>sna` - All messages
-- `<leader>un` - Dismiss notifications
-
-### **🎨 Theme Switching:**
-- `<leader>ut` - Toggle theme (cycle through themes)
-- `<leader>uN` - Next theme
-- `<leader>uP` - Previous theme
-- `<leader>u1` - Tokyo Night
-- `<leader>u2` - Catppuccin
-- `<leader>u3` - Gruvbox
-- `<leader>u4` - OneDark
-- `<leader>u5` - Dracula
-
-### **🌐 Web Development:**
-- `<C-y>` - Emmet expand
-- `<leader>fp` - Format with Prettier
-
-### **Surround:**
-- `ys` - Add surround
-- `ds` - Delete surround
-- `cs` - Change surround
-
-### **Comments:**
-- `<leader>/` - Comment line
-- `<leader>cb` - Comment block
-
-### **Buffer Navigation (Improved):**
-- `<C-l>` - Next buffer
-- `<C-h>` - Previous buffer
-- `<leader>bd` - Close buffer
-- `<leader>bp` - Pick buffer
-- `<leader>1-9` - Go to buffer 1-9
-
-### **Tab Navigation:**
+#### **Tab Management**
 - `<leader>tn` - New tab
 - `<leader>tc` - Close tab
 - `<leader>tl` - Next tab
 - `<leader>th` - Previous tab
 
-## 🎨 Theme
+### 🔧 LSP (Language Server Protocol)
 
-**Tokyo Night** with custom pastel colors:
-- Search with pastel orange
-- Selection with pastel blue
-- Parentheses with pastel blue
-- Line numbers with yellow
-- Cursor with orange
+#### **Code Navigation**
+- `gd` - Go to definition
+- `gr` - References
+- `K` - Hover
+- `<leader>ca` - Code actions
+- `<leader>rn` - Rename
+- `<leader>f` - Format
 
-**Theme Switcher** with 5 themes:
-- Tokyo Night (default)
-- Catppuccin
-- Gruvbox
-- OneDark
-- Dracula
+#### **Diagnostics**
+- `<leader>gl` - Show line diagnostics
+- `<leader>gj` - Next diagnostic
+- `<leader>gk` - Previous diagnostic
 
-## ⚡ Performance
+### 💻 Terminal
 
-- **LazyVim** - Optimized and fast config
-- **Lazy loading** - Plugins load only when needed
-- **Smooth animations** - With mini.animate
-- **Fast startup** - No unnecessary plugins
+#### **ToggleTerm**
+- `<leader>t` - Toggle terminal
+- `<leader>th` - Horizontal terminal split
+- `<leader>tv` - Vertical terminal split
+- `<leader>tt` - Terminal in new tab
+
+#### **Terminal Navigation**
+- `<C-h>` - Go to left window (in terminal)
+- `<C-j>` - Go to lower window (in terminal)
+- `<C-k>` - Go to upper window (in terminal)
+- `<C-l>` - Go to right window (in terminal)
+
+### 💾 Sessions
+
+#### **Persistence**
+- `<leader>qs` - Restore session
+- `<leader>ql` - Restore last session
+- `<leader>qd` - Don't save session
+
+### 🎨 Theme & UI
+
+#### **Theme Switching**
+- `<leader>ut` - Toggle theme
+- `<leader>uN` - Next theme
+- `<leader>up` - Previous theme
+- `<leader>u1` - Tokyo Night
+- `<leader>u2` - Catppuccin
+- `<leader>u3` - Gruvbox
+- `<leader>u4` - Dracula
+- `<leader>u5` - Habamax
+
+#### **UI Controls**
+- `<leader>un` - Dismiss all notifications
+- `<leader>snl` - Noice last message
+- `<leader>snh` - Noice history
+- `<leader>sna` - Noice all
+
+### 📸 Code Capture & Recording
+
+#### **Screenshots**
+- `<leader>ci` - Capture buffer as image
+- `<leader>ci` - Capture selection as image (visual mode)
+- `<leader>cc` - Capture code block with syntax highlighting (visual mode)
+
+#### **Screen Recording**
+- `<leader>cr` - Toggle screen recording
+
+#### **Focus Mode**
+- `<leader>ct` - Toggle Twilight (focus mode)
+
+#### **Code Execution**
+- `<leader>cs` - Run code snippet (SnipRun)
+- `<leader>cl` - Clear snippet output
+
+#### **ASCII Art**
+- `<leader>cb` - Create ASCII box around selection (visual mode)
+- `<leader>cv` - Draw box around selection (Venn)
+
+### 🌐 Web Development
+
+#### **Emmet**
+- `<C-y>` - Emmet expand (in insert mode)
+
+#### **Prettier**
+- `<leader>fp` - Format with Prettier
+
+#### **Live Server**
+- `<leader>ls` - Toggle Live Server
+
+### 🔍 Search & Replace
+
+#### **Search**
+- `<leader>sr` - Search and replace
+- `<leader>sR` - Search and replace word under cursor
+- `<leader>nh` - Clear highlights
+
+#### **Quickfix & Location List**
+- `<C-q>` - Close quickfix
+- `]q` - Next quickfix
+- `[q` - Previous quickfix
+- `]l` - Next location
+- `[l` - Previous location
+
+### 📋 Clipboard
+
+#### **System Clipboard**
+- `<leader>y` - Yank to clipboard
+- `<leader>Y` - Yank line to clipboard
+- `<leader>p` - Paste from clipboard
+- `<leader>P` - Paste from clipboard before
+
+### 🔧 Text Manipulation
+
+#### **Surround**
+- `ys` - Add surround
+- `ds` - Delete surround
+- `cs` - Change surround
+
+#### **Comments**
+- `<leader>/` - Toggle comment line
+- `<leader>/` - Toggle comment for selection (visual mode)
+
+#### **Line Movement**
+- `<A-j>` - Move line down
+- `<A-k>` - Move line up
+
+#### **Indentation**
+- `<` - Better indent (visual mode)
+- `>` - Better indent (visual mode)
+
+### 💾 File Operations
+
+#### **Save & Quit**
+- `<C-s>` - Save file
+- `<leader>w` - Save
+- `<leader>W` - Save all
+- `<leader>q` - Quit
+- `<leader>Q` - Quit all
+
+### 🎛️ Toggle Options
+
+#### **Display Options**
+- `<leader>tw` - Toggle wrap
+- `<leader>tn` - Toggle number
+- `<leader>tr` - Toggle relative number
+- `<leader>ts` - Toggle spell
+
+### 🔍 Git Integration
+
+#### **Git Commands**
+- `<leader>gb` - Git blame
+- `<leader>gd` - Git diff
+- `<leader>gs` - Git status
+
+### 🧹 Utility
+
+#### **Clear & Reset**
+- `<esc>` - Clear search highlights
+- `<leader>gg` - Go to previous file
+
+### 📝 LazyVim
+
+#### **Plugin Manager**
+- `<leader>E` - Open Lazy (Plugin Manager)
 
 ## 🛠️ Installation
 
-1. **Clone this repository:**
-   ```bash
-   git clone <your-repo> ~/.config/nvim
-   ```
+### Option 1: One-Line Installation (Recommended)
 
-2. **Install dependencies:**
-   ```bash
-   # Ripgrep (for Telescope)
-   sudo pacman -S ripgrep fd
-   
-   # Node.js (for LSP)
-   sudo pacman -S nodejs npm
-   
-   # Python (for debugging and testing)
-   sudo pacman -S python python-pip
-   
-   # Go (optional, for Go LSP)
-   sudo pacman -S go
-   
-   # Rust (optional, for Rust LSP)
-   sudo pacman -S rust
-   ```
+```bash
+# Install with a single command
+curl -fsSL https://raw.githubusercontent.com/yourusername/NVimX-1/main/curl-install.sh | bash
+```
 
-3. **Open Neovim:**
-   ```bash
-   nvim
-   ```
+### Option 2: Clone and Install
 
-4. **LazyVim will install everything automatically**
+1. **Clone the repository:**
+```bash
+git clone https://github.com/yourusername/NVimX-1.git
+cd NVimX-1
+```
+
+2. **Run the installation script:**
+```bash
+./install.sh
+```
+
+3. **Start Neovim:**
+```bash
+nvim
+```
+
+### Option 3: Manual Installation
+
+If you prefer manual installation:
+
+1. **Clone to your Neovim config directory:**
+```bash
+git clone https://github.com/yourusername/NVimX-1.git ~/.config/nvim
+```
+
+2. **Install dependencies manually:**
+```bash
+# Install ripgrep (for Telescope)
+sudo pacman -S ripgrep
+
+# Install fd (for file finding)
+sudo pacman -S fd
+
+# Install Node.js (for LSP servers)
+sudo pacman -S nodejs npm
+
+# Install capture tools
+sudo pacman -S wl-screenshot imagemagick wf-recorder ffmpeg bat highlight
+
+# Install global npm packages
+npm install -g live-server typescript-language-server prettier
+```
+
+3. **Start Neovim and wait for plugins to install:**
+```bash
+nvim
+```
+
+## What the Installation Scripts Do
+
+The installation scripts automatically:
+
+✅ **Checks Prerequisites**
+- Verifies Neovim is installed
+- Detects your package manager (pacman, apt, yum)
+
+✅ **Backs Up Existing Config**
+- Creates a timestamped backup of your current `~/.config/nvim/`
+- Preserves your existing configuration
+
+✅ **Installs Dependencies**
+- **ripgrep** - Fast text search for Telescope
+- **fd** - Fast file finder
+- **Node.js & npm** - For LSP servers and web development tools
+
+✅ **Installs Capture Tools**
+- **wl-screenshot/imagemagick** - Screenshot tools
+- **wf-recorder/ffmpeg** - Screen recording tools
+- **bat/highlight** - Syntax highlighting for code capture
+
+✅ **Installs Global Packages**
+- **live-server** - Development server for web projects
+- **typescript-language-server** - TypeScript/JavaScript LSP
+- **prettier** - Code formatter
+- **@typescript-eslint/parser** - TypeScript ESLint parser
+- **@typescript-eslint/eslint-plugin** - TypeScript ESLint plugin
+
+✅ **Copies Configuration**
+- Copies all files to `~/.config/nvim/`
+- Sets proper permissions
+- Removes installation scripts from destination
+
+✅ **Creates Directories**
+- Creates `~/Pictures` for screenshots
+- Creates `~/Videos` for recordings
 
 ## 📁 Structure
 
 ```
-nvim/
-├── init.lua              # Main configuration
+~/.config/nvim/
+├── init.lua                 # Main entry point
 ├── lua/
 │   ├── config/
-│   │   ├── keymaps.lua   # Custom keybinds
-│   │   └── options.lua   # Custom options
+│   │   ├── autocmds.lua     # Auto commands
+│   │   ├── keymaps.lua      # Key mappings
+│   │   ├── lazy.lua         # Plugin manager setup
+│   │   ├── options.lua      # Neovim options
+│   │   ├── theme-toggle.lua # Theme switching
+│   │   └── capture-utils.lua # Code capture utilities
 │   └── plugins/
-│       ├── colorscheme.lua    # Tokyo Night
-│       ├── mini-animate.lua   # Animations
-│       ├── telescope.lua      # Search
-│       ├── telescope.lua       # Search and explorer
-│       ├── toggleterm.lua     # Terminal
-│       ├── gitsigns.lua       # Git
-│       ├── lsp.lua            # LSP
-│       ├── autopairs.lua      # Autopairs
-│       ├── comment.lua        # Comments
-│       ├── surround.lua       # Surround
-│       ├── indent-blankline.lua # Indentation
-│       ├── dap.lua            # Debugging
-│       ├── neotest.lua        # Testing
-│       ├── noice.lua          # Notifications
-│       ├── sessions.lua       # Sessions
-│       ├── webdev.lua         # Web development
-│       ├── theme-toggle.lua   # Theme switcher
-│       └── example.lua        # Example
-└── README.md
+│       ├── autopairs.lua    # Auto pairs
+│       ├── cmp.lua          # Completion
+│       ├── colorscheme.lua  # Color schemes
+│       ├── comment.lua      # Comments
+│       ├── dap.lua          # Debug adapter
+│       ├── gitsigns.lua     # Git signs
+│       ├── indent-blankline.lua # Indent guides
+│       ├── lsp.lua          # Language servers
+│       ├── mini-animate.lua # Animations
+│       ├── neotest.lua      # Testing
+│       ├── noice.lua        # UI components
+│       ├── oil.lua          # File explorer
+│       ├── sessions.lua     # Session management
+│       ├── surround.lua     # Surround operations
+│       ├── telescope.lua    # Fuzzy finder
+│       ├── toggleterm.lua   # Terminal
+│       ├── webdev.lua       # Web development
+│       ├── which-key.lua    # Key hints
+│       └── code-capture.lua # Code capture plugins
 ```
 
-## 🎯 Key Features
+## 🔧 Configuration
 
-### **🔧 Complete Debugging:**
-- Visual breakpoints
-- Step into/out/over
-- Variables and watches
-- Integrated REPL
-- Elegant UI
+### Adding New Plugins
 
-### **🧪 Testing Framework:**
-- Automatic tests
-- Test debugging
-- Results view
-- Multiple languages
+Create a new file in `lua/plugins/` or add to an existing one:
 
-### **💬 Elegant Notifications:**
-- Improved UI
-- Message history
-- Auto-dismiss
-- Visual commands
+```lua
+return {
+  "plugin-name/plugin-repo",
+  opts = {
+    -- plugin options
+  },
+  config = function(_, opts)
+    -- plugin configuration
+  end,
+}
+```
 
-### **💾 Smart Sessions:**
-- Automatic saving
-- Restore by branch
-- Persistent sessions
-- Recover work
+### Custom Keymaps
 
-### **🌐 Web Development:**
-- Emmet for HTML/CSS
-- Automatic Prettier
-- Enhanced LSP
-- Color highlighting
+Add your custom keymaps in `lua/config/keymaps.lua`:
 
-### **🔍 Improved Diagnostics:**
-- Organized view
-- Easy navigation
-- Improved quickfix
-- Visual references
+```lua
+keymap("n", "<leader>custom", "<cmd>CustomCommand<cr>", { desc = "Custom command" })
+```
 
-### **🎨 Complete Theme Switcher:**
-- 5 themes included (Tokyo Night, Catppuccin, Gruvbox, OneDark, Dracula)
-- Quick toggle with `<leader>ut`
-- Navigation with `<leader>uN` and `<leader>uP`
-- Direct access to themes with `<leader>u1-5`
-- Change notification
-- Easy configuration
+## 📸 Code Capture Features
 
-### **✨ Smooth Animations:**
-- Animated cursor
-- Smooth scroll
-- Window open/close
-- Resizing
+### Screenshots
+- **Buffer Capture**: Capture entire buffer as image
+- **Selection Capture**: Capture selected text as image
+- **Code Block Capture**: Capture code with syntax highlighting
+- **ASCII Art**: Create decorative boxes around code
 
-### **Pastel Colors:**
-- Search with pastel orange
-- Selection with pastel blue
-- Parentheses with pastel blue
-- Line numbers with yellow
+### Screen Recording
+- **Start/Stop Recording**: Toggle screen recording
+- **Automatic Naming**: Files saved with timestamps
+- **Multiple Formats**: Support for Wayland and X11
 
-### **Enhanced LSP:**
-- Inlay hints for TypeScript/JavaScript
-- Diagnostics with icons
-- Intelligent autocompletion
-- Automatic snippets
+### Focus Mode
+- **Twilight**: Dim inactive code for better focus
+- **Syntax Highlighting**: Enhanced code visibility
 
-### **Floating Terminal:**
-- Sleek curved borders
-- Transparency
-- Navigation with Ctrl+h/j/k/l
+### Code Execution
+- **SnipRun**: Execute code snippets inline
+- **Output Display**: Show results in Neovim
 
-### **Enhanced Telescope:**
-- Integrated file browser
-- Search with fd
-- Hidden files included
-- Search history
-- Improved navigation
+## 🐛 Troubleshooting
 
-## 🔧 Personalization
+### Common Issues
 
-### **Change Theme:**
-Edit `lua/plugins/theme-toggle.lua` and change the theme.
+1. **Theme not found**: Make sure the theme is installed via LazyVim
+2. **LSP not working**: Install language servers (e.g., `npm install -g typescript-language-server`)
+3. **Telescope not finding files**: Install `fd` or `ripgrep`
+4. **Capture tools not working**: Install screenshot/recording tools manually
 
-### **Add Plugins:**
-Create files in `lua/plugins/` with the configuration.
+### Debug Mode
 
-### **Modify Keybinds:**
-Edit `lua/config/keymaps.lua` for your preferences.
+Start Neovim with debug information:
+```bash
+nvim --log-level debug
+```
 
-### **Configure LSP:**
-Edit `lua/plugins/lsp.lua` to add servers.
+## 📝 Recent Fixes
 
-### **Configure DAP:**
-Edit `lua/plugins/dap.lua` to add adapters.
+- ✅ Fixed theme switching with error handling
+- ✅ Removed duplicate LSP configurations
+- ✅ Cleaned up keymaps and removed broken references
+- ✅ Fixed file explorer configuration
+- ✅ Added proper error handling for missing themes
+- ✅ Consolidated web development tools
+- ✅ Added automatic installation scripts
+- ✅ Added one-line curl installation
+- ✅ Added comprehensive keybinds reference
+- ✅ Added code capture and screen recording functionality
 
-## 📚 Supported Languages
+## 🤝 Contributing
 
-- **Lua** - Full support
-- **JavaScript/TypeScript** - LSP + Treesitter + Testing + Debugging
-- **Python** - LSP + Treesitter + Testing + Debugging
-- **Go** - LSP + Treesitter + Testing + Debugging
-- **Rust** - LSP + Treesitter + Testing + Debugging
-- **C/C++** - LSP + Treesitter
-- **HTML/CSS** - LSP + Treesitter + Emmet + Prettier
-- **JSON/YAML** - LSP + Treesitter
-- **Markdown** - Treesitter
-- **Bash** - Treesitter
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
 
-## 🎉 Enjoy your new Neovim experience!
+## 📄 License
 
-With LazyVim you get:
-- **Extreme speed** - Lazy loading
-- **Complete functionality** - Everything you need
-- **Professional debugging** - Full DAP support
-- **Testing framework** - Neotest integrated
-- **Web development** - Complete tools
-- **Smart sessions** - Recover your work
-- **Elegant notifications** - Improved UI
-- **Theme switcher** - Multiple themes
-- **Smooth animations** - Fluid experience
-- **Easy customization** - Clear structure
-- **Simple maintenance** - LazyVim updates automatically
-
-Your Neovim is now ultra fast, modern, and complete! 🚀
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

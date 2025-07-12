@@ -109,8 +109,8 @@ keymap("n", "<leader>up", "<cmd>lua require('config.theme-toggle').prev()<cr>", 
 keymap("n", "<leader>u1", "<cmd>lua require('config.theme-toggle').set('tokyonight')<cr>", { desc = "Tokyo Night" })
 keymap("n", "<leader>u2", "<cmd>lua require('config.theme-toggle').set('catppuccin')<cr>", { desc = "Catppuccin" })
 keymap("n", "<leader>u3", "<cmd>lua require('config.theme-toggle').set('gruvbox')<cr>", { desc = "Gruvbox" })
-keymap("n", "<leader>u4", "<cmd>lua require('config.theme-toggle').set('onedark')<cr>", { desc = "OneDark" })
-keymap("n", "<leader>u5", "<cmd>lua require('config.theme-toggle').set('dracula')<cr>", { desc = "Dracula" })
+keymap("n", "<leader>u4", "<cmd>lua require('config.theme-toggle').set('dracula')<cr>", { desc = "Dracula" })
+keymap("n", "<leader>u5", "<cmd>lua require('config.theme-toggle').set('habamax')<cr>", { desc = "Habamax" })
 
 -- Terminal
 keymap("n", "<leader>t", "<cmd>ToggleTerm<cr>", { desc = "Toggle terminal" })
@@ -122,62 +122,14 @@ keymap("t", "<C-j>", "<cmd>wincmd j<cr>", { desc = "Go to lower window" })
 keymap("t", "<C-k>", "<cmd>wincmd k<cr>", { desc = "Go to upper window" })
 keymap("t", "<C-l>", "<cmd>wincmd l<cr>", { desc = "Go to right window" })
 
--- File explorer (Snacks) - Smart Open
-keymap("n", "<leader>e", "<cmd>lua require('snacks').explorer.open()<cr>", { desc = "Snacks Explorer" })
+-- File explorer (Oil)
+keymap("n", "<leader>e", "<cmd>Oil<cr>", { desc = "Oil Explorer" })
 
--- Función personalizada para focus en Snacks Explorer
-local function focus_snacks_explorer()
-  -- Buscar la ventana que contiene el explorador
-  local wins = vim.api.nvim_list_wins()
-  for _, win in ipairs(wins) do
-    local buf = vim.api.nvim_win_get_buf(win)
-    local buf_name = vim.api.nvim_buf_get_name(buf)
-    local buf_type = vim.api.nvim_buf_get_option(buf, 'buftype')
-    
-    -- Buscar buffers que sean del explorador
-    if buf_type == 'nofile' or buf_name:match("snacks") or buf_name:match("explorer") then
-      -- Verificar si es realmente un buffer del explorador
-      local buf_lines = vim.api.nvim_buf_get_lines(buf, 0, 1, false)
-      if buf_lines and (buf_lines[1] and buf_lines[1]:match("^%s*$") or buf_lines[1] and buf_lines[1]:match("explorer")) then
-        vim.api.nvim_set_current_win(win)
-        return
-      end
-    end
-  end
-  
-  -- Si no encuentra el explorador, abrirlo
-  pcall(function()
-    require('snacks').explorer.open()
-  end)
-end
-
--- Función para toggle del explorador
-local function toggle_snacks_explorer()
-  local success, result = pcall(function()
-    return require('snacks').explorer.toggle()
-  end)
-  
-  if not success then
-    pcall(function()
-      require('snacks').explorer.open()
-    end)
-  end
-end
-
--- Exportar las funciones globalmente
-_G.focus_snacks_explorer = focus_snacks_explorer
-_G.toggle_snacks_explorer = toggle_snacks_explorer
-
+-- Lazy
 keymap("n", "<leader>E", "<cmd>Lazy<cr>", { desc = "Open Lazy (Plugin Manager)" })
 
 -- File browser (Telescope) - Smart Open
-keymap("n", "<leader>fe", "<cmd>lua smart_open.setup_telescope_smart_open()<cr>", { desc = "Telescope File Browser (Smart Open)" })
-
--- Smart open utilities
-keymap("n", "<leader>eo", "<cmd>lua focus_snacks_explorer()<cr>", { desc = "Focus Snacks Explorer" })
-
--- File explorer alternative (Shift+E)
--- keymap("n", "<leader>E", ":bufdo bd<cr>", { desc = "Close all buffers" })
+keymap("n", "<leader>fe", "<cmd>Telescope file_browser<cr>", { desc = "Telescope File Browser" })
 
 -- Surround
 keymap("n", "ys", "<cmd>lua require('mini.surround').add()<cr>", { desc = "Add surround" })
@@ -248,17 +200,39 @@ keymap("n", "<leader>ls", function()
       dir = file_dir,
       direction = "horizontal",
       close_on_exit = false,
-      on_open = function(term)
-        -- vim.cmd('startinsert!')
-      end,
+      size = 20,
     })
     live_server:toggle()
   else
     live_server:toggle()
   end
-end, { desc = "Launch Live Server in current file's directory (horizontal split)" })
-keymap("n", "<leader>lc", function()
-  if live_server and live_server:is_open() then
-    live_server:close()
-  end
-end, { desc = "Close Live Server terminal" })
+end, { desc = "Toggle Live Server" })
+
+-- Code Capture and Recording
+keymap("n", "<leader>ci", "<cmd>lua require('config.capture-utils').capture_buffer_as_image()<cr>", { desc = "Capture buffer as image" })
+keymap("v", "<leader>ci", "<cmd>lua require('config.capture-utils').capture_selection_as_image()<cr>", { desc = "Capture selection as image" })
+keymap("v", "<leader>cc", "<cmd>lua require('config.capture-utils').capture_code_block()<cr>", { desc = "Capture code block with syntax highlighting" })
+keymap("v", "<leader>cb", "<cmd>lua require('config.capture-utils').create_ascii_box()<cr>", { desc = "Create ASCII box around selection" })
+keymap("n", "<leader>cr", "<cmd>lua require('config.capture-utils').toggle_recording_mode()<cr>", { desc = "Toggle screen recording" })
+keymap("n", "<leader>ct", "<cmd>Twilight<cr>", { desc = "Toggle Twilight (focus mode)" })
+
+-- SnipRun (Code execution)
+keymap("n", "<leader>cs", "<cmd>SnipRun<cr>", { desc = "Run code snippet" })
+keymap("n", "<leader>cl", "<cmd>SnipReset<cr>", { desc = "Clear snippet output" })
+
+-- Venn (ASCII art)
+keymap("n", "<leader>cv", "<cmd>VBox<cr>", { desc = "Draw box around selection" })
+
+-- AI Assistant and Code Suggestions
+keymap("n", "<leader>ai", "<cmd>CopilotChatToggle<cr>", { desc = "Toggle Copilot Chat" })
+keymap("n", "<leader>ae", "<cmd>CopilotChatExplain<cr>", { desc = "Explain code" })
+keymap("n", "<leader>at", "<cmd>CopilotChatTests<cr>", { desc = "Generate tests" })
+keymap("n", "<leader>af", "<cmd>CopilotChatFix<cr>", { desc = "Fix code" })
+keymap("n", "<leader>ar", "<cmd>CopilotChatReview<cr>", { desc = "Review code" })
+
+-- Refactoring
+keymap("n", "<leader>rr", "<cmd>lua require('refactoring').select_refactor()<cr>", { desc = "Select Refactor" })
+keymap("n", "<leader>rp", "<cmd>lua require('refactoring').debug.printf({below = false})<cr>", { desc = "Debug Print" })
+keymap("n", "<leader>rv", "<cmd>lua require('refactoring').debug.print_var({normal = true})<cr>", { desc = "Debug Print Var" })
+keymap("v", "<leader>rv", "<cmd>lua require('refactoring').debug.print_var({})<cr>", { desc = "Debug Print Var" })
+keymap("n", "<leader>rc", "<cmd>lua require('refactoring').debug.cleanup({})<cr>", { desc = "Debug Cleanup" })
