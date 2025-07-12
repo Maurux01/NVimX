@@ -162,10 +162,10 @@ if ! command -v bat &> /dev/null && ! command -v highlight &> /dev/null; then
     fi
 fi
 
-# Install AI assistant tools
-print_status "Installing AI assistant tools..."
+# Install open source AI assistant tools
+print_status "Installing open source AI assistant tools..."
 
-# Check for cmake (for CopilotChat)
+# Check for cmake (for some AI tools)
 if ! command -v cmake &> /dev/null; then
     print_warning "cmake not found. Installing..."
     if command -v pacman &> /dev/null; then
@@ -179,7 +179,7 @@ if ! command -v cmake &> /dev/null; then
     fi
 fi
 
-# Check for ninja-build (for CopilotChat)
+# Check for ninja-build (for some AI tools)
 if ! command -v ninja &> /dev/null; then
     print_warning "ninja-build not found. Installing..."
     if command -v pacman &> /dev/null; then
@@ -193,7 +193,7 @@ if ! command -v ninja &> /dev/null; then
     fi
 fi
 
-# Check for pkg-config (for CopilotChat)
+# Check for pkg-config (for some AI tools)
 if ! command -v pkg-config &> /dev/null; then
     print_warning "pkg-config not found. Installing..."
     if command -v pacman &> /dev/null; then
@@ -324,11 +324,10 @@ echo "• Screenshot tools (wl-screenshot/imagemagick)"
 echo "• Screen recording (wf-recorder/ffmpeg)"
 echo "• Syntax highlighting (bat/highlight)"
 echo ""
-echo -e "${BLUE}AI assistant tools installed:${NC}"
-echo "• GitHub Copilot (requires subscription)"
-echo "• CopilotChat (requires cmake, ninja, pkg-config)"
+echo -e "${BLUE}Open Source AI tools installed:${NC}"
 echo "• Codeium (free AI completion)"
 echo "• Tabnine (alternative AI completion)"
+echo "• ChatGPT.nvim (open source AI chat)"
 echo "• Refactoring tools"
 echo ""
 echo -e "${BLUE}Git and Docker tools installed:${NC}"
@@ -337,6 +336,11 @@ echo "• LazyDocker (visual Docker interface)"
 echo "• Docker (container management)"
 echo "• Git conflict resolution"
 echo "• Git blame and signs"
+echo ""
+echo -e "${BLUE}AI Assistant Setup:${NC}"
+echo "• Set your OpenAI API key: ${YELLOW}export OPENAI_API_KEY='your-api-key'${NC}"
+echo "• Or add it to your shell profile: ${YELLOW}echo 'export OPENAI_API_KEY=your-api-key' >> ~/.bashrc${NC}"
+echo "• Restart your terminal after setting the API key"
 echo ""
 echo -e "${BLUE}If you had a previous configuration, it was backed up to:${NC}"
 if [ -n "$BACKUP_DIR" ]; then

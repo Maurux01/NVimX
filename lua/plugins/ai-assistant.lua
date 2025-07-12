@@ -22,7 +22,7 @@ return {
     end,
   },
 
-  -- Tabnine (Alternative AI completion)
+  -- Tabnine (Alternative AI completion - Open Source)
   {
     "codota/tabnine-nvim",
     build = "./dl_binaries.sh",
@@ -195,6 +195,128 @@ return {
         next = "j",
         help = "?",
       },
+    },
+  },
+
+  -- Open Source AI Chat (Alternative to CopilotChat)
+  {
+    "jackMort/ChatGPT.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("chatgpt").setup({
+        api_key_cmd = "echo $OPENAI_API_KEY",
+        openai_params = {
+          model = "gpt-3.5-turbo",
+          frequency_penalty = 0,
+          presence_penalty = 0,
+          max_tokens = 300,
+          temperature = 0,
+          top_p = 1,
+          n = 1,
+        },
+        openai_edit_params = {
+          model = "code-davinci-edit-001",
+          temperature = 0,
+          top_p = 1,
+          n = 1,
+        },
+        max_history = 0,
+        show_help = "yes",
+        chat_input = {
+          prompt = "> ",
+        },
+        chat_win_options = {
+          winblend = 0,
+          winhighlight = "Normal:Normal,FloatBorder:FloatBorder",
+        },
+        popup_win_options = {
+          winblend = 0,
+          winhighlight = "Normal:Normal,FloatBorder:FloatBorder",
+        },
+        show_break_lines = false,
+        popup_layout = {
+          default = "center",
+          center = {
+            width = 80,
+            height = 80,
+          },
+          right = {
+            width = 30,
+            width_settings_open = 50,
+          },
+        },
+        popup_type = {
+          help = "float",
+          chat = "float",
+        },
+        debug = false,
+        disable_signs = false,
+        log = {
+          enabled = false,
+          file = nil,
+        },
+        use_popup = true,
+        highlights = {
+          input = "Normal:Normal",
+          unknown = "ErrorMsg",
+          flags = "Special",
+        },
+        prompts = {
+          Explain = "Explain how the selected code works.",
+          Review = "Review the selected code and provide suggestions for improvement.",
+          Tests = "Generate unit tests for the selected code.",
+          Fix = "Fix the selected code and explain the changes.",
+          Optimize = "Optimize the selected code and explain the improvements.",
+          Docs = "Generate documentation for the selected code.",
+        },
+        chat = {
+          sessions_window = {
+            border = "single",
+            winhighlight = "Normal:Normal,FloatBorder:FloatBorder",
+            winblend = 0,
+          },
+          type = "popup",
+          relative = "editor",
+          position = {
+            row = 0,
+            col = 0,
+          },
+          size = {
+            width = 80,
+            height = 80,
+          },
+          session = {
+            auto_save = true,
+            auto_save_path = vim.fn.stdpath("data") .. "/chatgpt_sessions",
+          },
+        },
+        popup = {
+          enter = "<CR>",
+          close = "<C-c>",
+        },
+        keymaps = {
+          close = { "<C-c>" },
+          yank_last = "<g-y>",
+          yank_last_code = "<g-c>",
+          scroll_up = "<C-u>",
+          scroll_down = "<C-d>",
+          toggle_settings = "<C-o>",
+          new_session = "<C-n>",
+          cycle_windows = "<Tab>",
+          select_session = "<Space>",
+          rename_session = "r",
+          delete_session = "d",
+          draft_message = "<C-d>",
+          toggle_settings = "<C-o>",
+          toggle_message_role = "<C-r>",
+          toggle_system_role_open = "<C-s>",
+        },
+      })
+    end,
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
     },
   },
 } 

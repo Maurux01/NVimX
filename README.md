@@ -10,11 +10,12 @@ A modern Neovim configuration based on LazyVim with custom enhancements for web 
 - **Fuzzy Finder**: Telescope for files, grep, and more
 - **LSP Support**: Full language server protocol support for multiple languages
 - **Web Development**: Specialized tools for HTML, CSS, JavaScript, TypeScript
-- **Git Integration**: Git signs and blame functionality
+- **Git Integration**: LazyGit, Git signs, blame, and conflict resolution
+- **Docker Integration**: LazyDocker for container management
 - **Terminal**: Integrated terminal with ToggleTerm
 - **Sessions**: Automatic session management with persistence.nvim
 - **Code Capture**: Screenshot and screen recording capabilities
-- **AI Assistant**: GitHub Copilot, Codeium, and AI-powered code suggestions
+- **AI Assistant**: Open source AI tools (Codeium, Tabnine, ChatGPT.nvim)
 
 ## 🎨 Themes
 
@@ -133,20 +134,26 @@ A modern Neovim configuration based on LazyVim with custom enhancements for web 
 - `<leader>snh` - Noice history
 - `<leader>sna` - Noice all
 
-### 🤖 AI Assistant & Code Suggestions
+### 🤖 Open Source AI Assistant & Code Suggestions
 
-#### **GitHub Copilot**
+#### **Codeium (Free AI Completion)**
 - `<Tab>` - Accept suggestion
-- `<M-]>` - Next suggestion
-- `<M-[>` - Previous suggestion
 - `<C-]>` - Dismiss suggestion
+- Automatic code completion
 
-#### **Copilot Chat**
-- `<leader>ai` - Toggle Copilot Chat
-- `<leader>ae` - Explain code
-- `<leader>at` - Generate tests
-- `<leader>af` - Fix code
+#### **Tabnine (Alternative AI Completion)**
+- `<Tab>` - Accept suggestion
+- `<C-]>` - Dismiss suggestion
+- Context-aware suggestions
+
+#### **ChatGPT.nvim (Open Source AI Chat)**
+- `<leader>ai` - Open ChatGPT
+- `<leader>ae` - Edit with ChatGPT
+- `<leader>at` - Explain code
+- `<leader>af` - Fix bug
 - `<leader>ar` - Review code
+- `<leader>ao` - Optimize code
+- `<leader>ad` - Add tests
 
 #### **Code Completion**
 - `<C-Space>` - Trigger completion
@@ -161,6 +168,43 @@ A modern Neovim configuration based on LazyVim with custom enhancements for web 
 - `<leader>rp` - Debug print
 - `<leader>rv` - Debug print variable
 - `<leader>rc` - Debug cleanup
+
+### 🐙 Git & Version Control
+
+#### **LazyGit (Visual Git Interface)**
+- `<leader>gg` - Open LazyGit
+- `<leader>gc` - LazyGit Config
+- `<leader>gf` - LazyGit Filter
+- `<leader>gl` - LazyGit Filter Current File
+
+#### **Git Signs & Blame**
+- `]c` - Next Git hunk
+- `[c` - Previous Git hunk
+- `<leader>rh` - Reset Git hunk
+- `<leader>ph` - Preview Git hunk
+- `<leader>tb` - Toggle Git blame
+- `<leader>td` - Toggle Git deleted
+- `<leader>gb` - Toggle Git blame
+
+#### **Git Conflict Resolution**
+- `<leader>gco` - Choose Ours
+- `<leader>gct` - Choose Theirs
+- `<leader>gcb` - Choose Both
+- `<leader>gcn` - Choose None
+- `<leader>gcp` - Previous Conflict
+- `<leader>gcn` - Next Conflict
+
+### 🐳 Docker & Containers
+
+#### **LazyDocker (Visual Docker Interface)**
+- `<leader>dd` - Open LazyDocker
+- `<leader>dc` - LazyDocker Config
+
+#### **Docker Telescope**
+- `<leader>fd` - Docker containers
+- `<leader>fi` - Docker images
+- `<leader>fv` - Docker volumes
+- `<leader>fn` - Docker networks
 
 ### 📸 Code Capture & Recording
 
@@ -320,8 +364,11 @@ sudo pacman -S nodejs npm
 # Install capture tools
 sudo pacman -S wl-screenshot imagemagick wf-recorder ffmpeg bat highlight
 
-# Install AI assistant tools
+# Install open source AI tools
 sudo pacman -S cmake ninja pkg-config
+
+# Install Git and Docker tools
+sudo pacman -S lazygit lazydocker docker
 
 # Install global npm packages
 npm install -g live-server typescript-language-server prettier
@@ -354,12 +401,19 @@ The installation scripts automatically:
 - **wf-recorder/ffmpeg** - Screen recording tools
 - **bat/highlight** - Syntax highlighting for code capture
 
-✅ **Installs AI Assistant Tools**
-- **cmake, ninja, pkg-config** - For CopilotChat compilation
-- **GitHub Copilot** - AI code completion (requires subscription)
+✅ **Installs Open Source AI Tools**
+- **cmake, ninja, pkg-config** - For AI tool compilation
 - **Codeium** - Free AI code completion
 - **Tabnine** - Alternative AI completion
+- **ChatGPT.nvim** - Open source AI chat
 - **Refactoring tools** - AI-powered code refactoring
+
+✅ **Installs Git and Docker Tools**
+- **LazyGit** - Visual Git interface
+- **LazyDocker** - Visual Docker interface
+- **Docker** - Container management
+- **Git conflict resolution** - Automatic conflict handling
+- **Git blame and signs** - Enhanced Git integration
 
 ✅ **Installs Global Packages**
 - **live-server** - Development server for web projects
@@ -410,8 +464,10 @@ The installation scripts automatically:
 │       ├── webdev.lua       # Web development
 │       ├── which-key.lua    # Key hints
 │       ├── code-capture.lua # Code capture plugins
-│       ├── copilot.lua      # AI assistant plugins
-│       └── ai-assistant.lua # AI tools and suggestions
+│       ├── copilot.lua      # Open source AI tools
+│       ├── ai-assistant.lua # AI tools and suggestions
+│       ├── lazy-git.lua     # Git integration
+│       └── lazy-docker.lua  # Docker integration
 ```
 
 ## 🔧 Configuration
@@ -440,29 +496,86 @@ Add your custom keymaps in `lua/config/keymaps.lua`:
 keymap("n", "<leader>custom", "<cmd>CustomCommand<cr>", { desc = "Custom command" })
 ```
 
-## 🤖 AI Assistant Features
+## 🤖 Open Source AI Assistant Features
 
 ### Code Completion
-- **GitHub Copilot**: AI-powered code suggestions (requires subscription)
-- **Codeium**: Free AI code completion
-- **Tabnine**: Alternative AI completion
+- **Codeium**: Free AI code completion with unlimited usage
+- **Tabnine**: Alternative AI completion with open source components
 - **LSP Integration**: Language-aware suggestions
+- **Context-Aware**: Suggestions based on your codebase
 
 ### AI Chat
-- **CopilotChat**: Interactive AI assistant for code explanations
+- **ChatGPT.nvim**: Open source AI chat interface
 - **Code Review**: AI-powered code review and suggestions
 - **Test Generation**: Automatic test generation
 - **Bug Fixing**: AI-assisted bug detection and fixes
+- **Documentation**: Automatic documentation generation
 
 ### Refactoring
 - **Smart Refactoring**: AI-powered code refactoring
 - **Debug Helpers**: Automatic debug print statements
 - **Code Analysis**: Intelligent code analysis and suggestions
+- **Performance Optimization**: AI-assisted performance improvements
 
 ### Snippets
 - **Friendly Snippets**: VSCode-compatible snippets
 - **LuaSnip**: Advanced snippet engine
 - **Auto-expansion**: Context-aware snippet expansion
+- **Custom Snippets**: Create your own snippets
+
+### Setup for ChatGPT.nvim
+1. **Get OpenAI API Key**: Sign up at [OpenAI](https://openai.com/)
+2. **Set Environment Variable**:
+   ```bash
+   export OPENAI_API_KEY='your-api-key-here'
+   ```
+3. **Add to Shell Profile** (optional):
+   ```bash
+   echo 'export OPENAI_API_KEY=your-api-key-here' >> ~/.bashrc
+   source ~/.bashrc
+   ```
+
+## 🐙 Git Integration Features
+
+### LazyGit (Visual Git Interface)
+- **Interactive Git Management**: Visual interface for Git operations
+- **Branch Management**: Easy branch creation, switching, and merging
+- **Commit History**: Visual commit history and diff viewing
+- **Staging Area**: Interactive staging and unstaging of files
+- **Remote Management**: Easy push, pull, and remote operations
+
+### Git Signs & Blame
+- **Line Indicators**: Visual indicators for added, modified, and deleted lines
+- **Hunk Navigation**: Easy navigation between Git hunks
+- **Blame Information**: Inline blame information for code lines
+- **Conflict Resolution**: Visual conflict resolution tools
+
+### Git Conflict Resolution
+- **Automatic Detection**: Automatic detection of Git conflicts
+- **Visual Resolution**: Visual interface for resolving conflicts
+- **Quick Actions**: Quick actions for choosing ours, theirs, or both
+- **Conflict Navigation**: Easy navigation between conflicts
+
+## 🐳 Docker Integration Features
+
+### LazyDocker (Visual Docker Interface)
+- **Container Management**: Visual interface for Docker containers
+- **Image Management**: Easy image building, pulling, and removal
+- **Volume Management**: Visual volume creation and management
+- **Network Management**: Docker network configuration
+- **Logs Viewing**: Real-time container logs
+
+### Docker Telescope
+- **Container Search**: Search and filter Docker containers
+- **Image Search**: Search and filter Docker images
+- **Volume Search**: Search and filter Docker volumes
+- **Network Search**: Search and filter Docker networks
+
+### Docker Development
+- **Dockerfile Support**: Syntax highlighting for Dockerfiles
+- **Docker Compose**: Support for docker-compose files
+- **Container Logs**: Real-time log viewing
+- **Resource Monitoring**: Container resource usage monitoring
 
 ## 📸 Code Capture Features
 
@@ -493,7 +606,10 @@ keymap("n", "<leader>custom", "<cmd>CustomCommand<cr>", { desc = "Custom command
 2. **LSP not working**: Install language servers (e.g., `npm install -g typescript-language-server`)
 3. **Telescope not finding files**: Install `fd` or `ripgrep`
 4. **Capture tools not working**: Install screenshot/recording tools manually
-5. **AI tools not working**: Install cmake, ninja, pkg-config for CopilotChat
+5. **AI tools not working**: Install cmake, ninja, pkg-config for AI tools
+6. **LazyGit not working**: Install LazyGit manually if auto-install fails
+7. **LazyDocker not working**: Install LazyDocker and Docker manually if auto-install fails
+8. **ChatGPT.nvim not working**: Set your OpenAI API key environment variable
 
 ### Debug Mode
 
@@ -514,7 +630,9 @@ nvim --log-level debug
 - ✅ Added one-line curl installation
 - ✅ Added comprehensive keybinds reference
 - ✅ Added code capture and screen recording functionality
-- ✅ Added AI assistant and code suggestions
+- ✅ Added open source AI assistant and code suggestions
+- ✅ Added LazyGit and LazyDocker integration
+- ✅ Removed GitHub Copilot, kept only open source AI tools
 
 ## 🤝 Contributing
 

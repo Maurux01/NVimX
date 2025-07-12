@@ -273,12 +273,14 @@ keymap("n", "<leader>cl", "<cmd>SnipReset<cr>", { desc = "Clear snippet output" 
 -- Venn (ASCII art)
 keymap("n", "<leader>cv", "<cmd>VBox<cr>", { desc = "Draw box around selection" })
 
--- AI Assistant and Code Suggestions
-keymap("n", "<leader>ai", "<cmd>CopilotChatToggle<cr>", { desc = "Toggle Copilot Chat" })
-keymap("n", "<leader>ae", "<cmd>CopilotChatExplain<cr>", { desc = "Explain code" })
-keymap("n", "<leader>at", "<cmd>CopilotChatTests<cr>", { desc = "Generate tests" })
-keymap("n", "<leader>af", "<cmd>CopilotChatFix<cr>", { desc = "Fix code" })
-keymap("n", "<leader>ar", "<cmd>CopilotChatReview<cr>", { desc = "Review code" })
+-- AI Assistant and Code Suggestions (Open Source)
+keymap("n", "<leader>ai", "<cmd>ChatGPT<cr>", { desc = "Open ChatGPT" })
+keymap("n", "<leader>ae", "<cmd>ChatGPTEditWithInstructions<cr>", { desc = "Edit with ChatGPT" })
+keymap("n", "<leader>at", "<cmd>ChatGPTRun explain_code<cr>", { desc = "Explain code" })
+keymap("n", "<leader>af", "<cmd>ChatGPTRun fix_bug<cr>", { desc = "Fix bug" })
+keymap("n", "<leader>ar", "<cmd>ChatGPTRun review_code<cr>", { desc = "Review code" })
+keymap("n", "<leader>ao", "<cmd>ChatGPTRun optimize_code<cr>", { desc = "Optimize code" })
+keymap("n", "<leader>ad", "<cmd>ChatGPTRun add_tests<cr>", { desc = "Add tests" })
 
 -- Refactoring
 keymap("n", "<leader>rr", "<cmd>lua require('refactoring').select_refactor()<cr>", { desc = "Select Refactor" })
